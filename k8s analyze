@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Использование:
+#   ./k8s_snapshot.sh /путь/к/kubeconfig > snapshot.json
+#   ./k8s_snapshot.sh kubeconfig.yaml | curl -sS -X POST https://llm.example/api/analyze -H 'Content-Type: application/json' -d @-
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 <kubeconfig.yaml>"
+  exit 1
+fi
+
+KUBECONFIG_FILE="$1"
+export KUBECONFIG="$KUBECONFIG_FILE"
+
+TMPDIR="$(mktemp -d)"
+cleanup() { rm -rf "$TMPDIR"; }
+trap cleanup EXIT
+
+# 0) Метаданные/версия/health
+kubectl config current-context > "$TMPDIR/context.txt" 2>&1 || true
+kubectl get --raw='/readyz?verbose' > "$TMPDIR/readyz.txt" 2>&1 || true
+kubectl get --raw='/livez?verbose'  > "$TMPDIR/livez.txt"  2>&1 || true
+kubectl version -o json            > "$TMPDIR/version.json" 2>/dev/null || echo '{}' > "$TMPDIR/version.json"
+
+# 1) Nodes
+kubectl get nodes -o json         > "$TMPDIR/nodes.json" 2>/dev/null || echo '{}' > "$TMPDIR/nodes.json"
+
+# 2) Namespaces (describe по каждому)
+NS_LIST=$(kubectl get ns -o jsonpath='{range .items[*]}{.metadata.name}{"\n"}{end}' 2>/dev/null || true)
+DESC_FILE="$TMPDIR/namespaces_describe.txt"
+: > "$DESC_FILE"
+if [[ -n "${NS_LIST}" ]]; then
+  while IFS= read -r ns; do
+    echo -e "===== NAMESPACE: ${ns} =====" >> "$DESC_FILE"
+    kubectl describe ns "$ns" >> "$DESC_FILE" 2>&1 || true
+    echo >> "$DESC_FILE"
+  done <<< "$NS_LIST"
+else
+  echo "no namespaces listed or access denied" > "$DESC_FILE"
+fi
+
+# 3) Pods / Deployments
+kubectl get pods        -A -o json > "$TMPDIR/pods.json"        2>/dev/null || echo '{}' > "$TMPDIR/pods.json"
+kubectl get deployments -A -o json > "$TMPDIR/deployments.json" 2>/dev/null || echo '{}' > "$TMPDIR/deployments.json"
+
+# 4) Сборка единого JSON
+jq -c -n \
+  --rawfile context        "$TMPDIR/context.txt" \
+  --rawfile readyz         "$TMPDIR/readyz.txt" \
+  --rawfile livez          "$TMPDIR/livez.txt" \
+  --slurpfile version      "$TMPDIR/version.json" \
+  --slurpfile nodes        "$TMPDIR/nodes.json" \
+  --rawfile ns_describe    "$DESC_FILE" \
+  --slurpfile pods         "$TMPDIR/pods.json" \
+  --slurpfile deployments  "$TMPDIR/deployments.json" '
+{
+  collected_at: (now | todate),
+  kubeconfig:   "'"$KUBECONFIG_FILE"'",
+  context:      $context,
+  health:       { readyz: $readyz, livez: $livez },
+  version:      ($version | if length>0 then .[0] else {} end),
+  nodes:        ($nodes   | if length>0 then .[0] else {} end),
+  namespaces:   { describe: $ns_describe },
+  pods:         ($pods        | if length>0 then .[0] else {} end),
+  deployments:  ($deployments | if length>0 then .[0] else {} end)
+}'
