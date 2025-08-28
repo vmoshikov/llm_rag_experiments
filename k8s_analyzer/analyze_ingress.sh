@@ -1,82 +1,113 @@
 #!/usr/bin/env bash
 set -euo pipefail
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${SCRIPT_DIR}/common.sh"
 
-ING_JSON="$(${KUBECTL_BIN} ${KUBECONFIG_FLAG} get ingress $(ns_args) $(ls_args) -o json)"
+KUBECTL="${KUBECTL:-kubectl}"
+
+# Хелпер: существует ли ресурс (kind ns name)
+exists() {
+  local kind="$1" ns="$2" name="$3"
+  if [[ -n "$ns" ]]; then
+    "$KUBECTL" get "$kind" "$name" -n "$ns" --no-headers >/dev/null 2>&1
+  else
+    "$KUBECTL" get "$kind" "$name" --no-headers >/dev/null 2>&1
+  fi
+}
+
+# Снимок всех ingress’ов одним вызовом
+ING_JSON="$("$KUBECTL" get ingress -A -o json)"
+
+# 1) Простейшие проверки внутри jq (ingressClass, backend basic)
 echo "$ING_JSON" | jq -r '
+  .items[] as $ing
+  | (
+      if
+        ($ing.spec.ingressClassName // ($ing.metadata.annotations["kubernetes.io/ingress.class"] // null)) == null
+      then
+        "[INGRESS] \($ing.metadata.namespace)/\($ing.metadata.name) — Missing ingressClass"
+      else empty end
+    ),
+    (
+      ($ing.spec.rules // [])
+      | .[]?
+      | .http.paths // []
+      | .[]?
+      | select(.backend.service != null)
+      | "[INGRESS] \($ing.metadata.namespace)/\($ing.metadata.name) — backend service=\(.backend.service.name) port=\(.backend.service.port.number // .backend.service.port.name)"
+    )
+' | grep -v '^null$' || true
+
+# 2) Глубокая валидация с обращением к API: existence service/port и tls secret
+#    (делаем вне jq, чтобы избежать синтаксических ловушек)
+# Разворачиваем список для последующих проверок
+mapfile -t ITEMS < <(echo "$ING_JSON" | jq -r '
   .items[]
   | {
       ns: .metadata.namespace,
       name: .metadata.name,
       iclass: (.spec.ingressClassName // .metadata.annotations["kubernetes.io/ingress.class"] // ""),
       rules: (.spec.rules // []),
-      tls:   (.spec.tls // [])
+      tls: (.spec.tls // [])
     }
-  | @base64' | while read -r row; do
-  obj="$(echo "$row" | base64 --decode)"
-  ns=$(echo "$obj" | jq -r '.ns'); name=$(echo "$obj" | jq -r '.name')
-  iclass=$(echo "$obj" | jq -r '.iclass')
+  | @base64
+')
 
-  # IngressClass present?
-  if [[ -z "$iclass" ]]; then
-    emit_issue "Ingress" "$ns" "$name" "INGRESS_NO_CLASS" "IngressClass not specified" '{}'
-  else
+for row in "${ITEMS[@]}"; do
+  obj="$(echo "$row" | base64 --decode)"
+  ns="$(echo "$obj" | jq -r '.ns')"
+  name="$(echo "$obj" | jq -r '.name')"
+  iclass="$(echo "$obj" | jq -r '.iclass')"
+
+  # ingressClass exists?
+  if [[ -n "$iclass" ]]; then
     if ! exists "ingressclass" "" "$iclass"; then
-      ctx=$(jq -cn --arg ic "$iclass" '{ingressClassName:$ic}')
-      emit_issue "Ingress" "$ns" "$name" "INGRESS_CLASS_NOT_FOUND" "IngressClass not found" "$ctx"
-    }
+      echo "[INGRESS] ${ns}/${name} — IngressClass not found: ${iclass}"
+    fi
   fi
 
-  # Rules -> backends
-  echo "$obj" | jq -r '
-    .rules[]? | {host:.host, paths:(.http.paths // [])}
-    | .paths[]?
-    | {host:.host, svc:(.backend.service.name // ""), portName:(.backend.service.port.name // ""), portNumber:(.backend.service.port.number // 0)}
-    | @base64' | while read -r r2; do
-    o2="$(echo "$r2" | base64 --decode)"
-    host=$(echo "$o2" | jq -r '.host // ""')
-    svc=$(echo "$o2" | jq -r '.svc // ""')
-    pName=$(echo "$o2" | jq -r '.portName // ""')
-    pNum=$(echo "$o2" | jq -r '.portNumber // 0')
+  # Backend services & ports
+  mapfile -t PATHS < <(echo "$obj" | jq -r '
+    .rules[]? | .http.paths // [] | .[]?
+    | {svc:(.backend.service.name // ""), portName:(.backend.service.port.name // ""), portNum:(.backend.service.port.number // 0)}
+    | @base64
+  ')
+  for p in "${PATHS[@]:-}"; do
+    [[ -z "${p:-}" ]] && continue
+    o="$(echo "$p" | base64 --decode)"
+    svc="$(echo "$o" | jq -r '.svc')"
+    portName="$(echo "$o" | jq -r '.portName')"
+    portNum="$(echo "$o" | jq -r '.portNum')"
 
     if [[ -z "$svc" ]]; then
-      ctx=$(jq -cn --arg host "$host" '{host:$host}')
-      emit_issue "Ingress" "$ns" "$name" "INGRESS_BACKEND_MISSING" "Backend service not specified" "$ctx"
+      echo "[INGRESS] ${ns}/${name} — Backend service not specified"
       continue
     fi
     if ! exists "service" "$ns" "$svc"; then
-      ctx=$(jq -cn --arg host "$host" --arg svc "$svc" '{host:$host, service:$svc}')
-      emit_issue "Ingress" "$ns" "$name" "INGRESS_SERVICE_NOT_FOUND" "Backend service does not exist" "$ctx"
+      echo "[INGRESS] ${ns}/${name} — Service not found: ${svc}"
       continue
     fi
-
-    # Проверка порта сервиса
-    SVC_JSON="$(${KUBECTL_BIN} ${KUBECONFIG_FLAG} get svc "$svc" -n "$ns" -o json)"
-    port_ok="false"
-    if [[ -n "$pName" ]]; then
-      found=$(echo "$SVC_JSON" | jq -r --arg p "$pName" '[.spec.ports[]?|select(.name==$p)]|length')
-      [[ "$found" -gt 0 ]] && port_ok="true"
-    elif [[ "$pNum" -ne 0 ]]; then
-      found=$(echo "$SVC_JSON" | jq -r --argjson n "$pNum" '[.spec.ports[]?|select(.port==$n)]|length')
-      [[ "$found" -gt 0 ]] && port_ok="true"
+    # Проверка порта в сервисе
+    SVC_JSON="$("$KUBECTL" get svc "$svc" -n "$ns" -o json)"
+    if [[ -n "$portName" ]]; then
+      found="$(echo "$SVC_JSON" | jq -r --arg pn "$portName" '[.spec.ports[]?|select(.name==$pn)]|length')"
+      if [[ "$found" -eq 0 ]]; then
+        echo "[INGRESS] ${ns}/${name} — Service port name not found: ${svc}.${portName}"
+      fi
+    elif [[ "$portNum" -ne 0 ]]; then
+      found="$(echo "$SVC_JSON" | jq -r --argjson pn "$portNum" '[.spec.ports[]?|select(.port==$pn)]|length')"
+      if [[ "$found" -eq 0 ]]; then
+        echo "[INGRESS] ${ns}/${name} — Service port number not found: ${svc}:${portNum}"
+      fi
     else
-      # ни name, ни number
-      :
-    fi
-    if [[ "$port_ok" != "true" ]]; then
-      ctx=$(jq -cn --arg host "$host" --arg svc "$svc" --arg pName "$pName" --argjson pNum "$pNum" '{host:$host, service:$svc, portName:$pName, portNumber:$pNum}')
-      emit_issue "Ingress" "$ns" "$name" "INGRESS_SERVICE_PORT_INVALID" "Service port referenced by Ingress not found" "$ctx"
+      echo "[INGRESS] ${ns}/${name} — Backend port is missing for service: ${svc}"
     fi
   done
 
-  # TLS -> secret presence
-  echo "$obj" | jq -r '.tls[]? | {secret: .secretName} | select(.secret!=null) | @base64' | while read -r r3; do
-    o3="$(echo "$r3" | base64 --decode)"
-    sec=$(echo "$o3" | jq -r '.secret')
+  # TLS secrets
+  mapfile -t TLS_ITEMS < <(echo "$obj" | jq -r '.tls[]? | select(.secretName!=null) | .secretName')
+  for sec in "${TLS_ITEMS[@]:-}"; do
+    [[ -z "${sec:-}" ]] && continue
     if ! exists "secret" "$ns" "$sec"; then
-      ctx=$(jq -cn --arg secret "$sec" '{secretName:$secret}')
-      emit_issue "Ingress" "$ns" "$name" "INGRESS_TLS_SECRET_NOT_FOUND" "TLS secret not found" "$ctx"
+      echo "[INGRESS] ${ns}/${name} — TLS secret not found: ${sec}"
     fi
   done
 done
