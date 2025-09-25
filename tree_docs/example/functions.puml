@@ -1,0 +1,1222 @@
+@startuml
+set namespaceSeparator none
+hide empty members
+package "cmd/analyze/analyze.go" as file_cmd_analyze_analyze_go {
+  class "cmd/analyze/analyze.go" as mod_cmd_analyze_analyze_go
+    mod_cmd_analyze_analyze_go : init() : }
+}
+package "cmd/auth/add.go" as file_cmd_auth_add_go {
+  class "cmd/auth/add.go" as mod_cmd_auth_add_go
+    mod_cmd_auth_add_go : init() : }
+}
+package "cmd/auth/auth.go" as file_cmd_auth_auth_go {
+  class "cmd/auth/auth.go" as mod_cmd_auth_auth_go
+    mod_cmd_auth_auth_go : init() : }
+}
+package "cmd/auth/default.go" as file_cmd_auth_default_go {
+  class "cmd/auth/default.go" as mod_cmd_auth_default_go
+    mod_cmd_auth_default_go : init() : }
+}
+package "cmd/auth/list.go" as file_cmd_auth_list_go {
+  class "cmd/auth/list.go" as mod_cmd_auth_list_go
+    mod_cmd_auth_list_go : printDetails(provider:r) : }
+    mod_cmd_auth_list_go : init() : }
+}
+package "cmd/auth/remove.go" as file_cmd_auth_remove_go {
+  class "cmd/auth/remove.go" as mod_cmd_auth_remove_go
+    mod_cmd_auth_remove_go : init() : }
+}
+package "cmd/auth/update.go" as file_cmd_auth_update_go {
+  class "cmd/auth/update.go" as mod_cmd_auth_update_go
+    mod_cmd_auth_update_go : init() : }
+}
+package "cmd/cache/add.go" as file_cmd_cache_add_go {
+  class "cmd/cache/add.go" as mod_cmd_cache_add_go
+    mod_cmd_cache_add_go : init() : }
+}
+package "cmd/cache/cache.go" as file_cmd_cache_cache_go {
+  class "cmd/cache/cache.go" as mod_cmd_cache_cache_go
+    mod_cmd_cache_cache_go : init() : }
+}
+package "cmd/cache/get.go" as file_cmd_cache_get_go {
+  class "cmd/cache/get.go" as mod_cmd_cache_get_go
+    mod_cmd_cache_get_go : init() : }
+}
+package "cmd/cache/list.go" as file_cmd_cache_list_go {
+  class "cmd/cache/list.go" as mod_cmd_cache_list_go
+    mod_cmd_cache_list_go : init() : }
+}
+package "cmd/cache/purge.go" as file_cmd_cache_purge_go {
+  class "cmd/cache/purge.go" as mod_cmd_cache_purge_go
+    mod_cmd_cache_purge_go : init() : }
+}
+package "cmd/cache/remove.go" as file_cmd_cache_remove_go {
+  class "cmd/cache/remove.go" as mod_cmd_cache_remove_go
+    mod_cmd_cache_remove_go : init() : }
+}
+package "cmd/customAnalyzer/add.go" as file_cmd_customAnalyzer_add_go {
+  class "cmd/customAnalyzer/add.go" as mod_cmd_customAnalyzer_add_go
+    mod_cmd_customAnalyzer_add_go : init() : }
+}
+package "cmd/customAnalyzer/customAnalyzer.go" as file_cmd_customAnalyzer_customAnalyzer_go {
+  class "cmd/customAnalyzer/customAnalyzer.go" as mod_cmd_customAnalyzer_customAnalyzer_go
+    mod_cmd_customAnalyzer_customAnalyzer_go : init() : }
+}
+package "cmd/customAnalyzer/list.go" as file_cmd_customAnalyzer_list_go {
+  class "cmd/customAnalyzer/list.go" as mod_cmd_customAnalyzer_list_go
+    mod_cmd_customAnalyzer_list_go : printDetails(analyzer:o) : }
+    mod_cmd_customAnalyzer_list_go : init() : }
+}
+package "cmd/customAnalyzer/remove.go" as file_cmd_customAnalyzer_remove_go {
+  class "cmd/customAnalyzer/remove.go" as mod_cmd_customAnalyzer_remove_go
+    mod_cmd_customAnalyzer_remove_go : init() : }
+}
+package "cmd/dump/dump.go" as file_cmd_dump_dump_go {
+  class "cmd/dump/dump.go" as mod_cmd_dump_dump_go
+    mod_cmd_dump_dump_go : init() : }
+}
+package "cmd/filters/add.go" as file_cmd_filters_add_go {
+  class "cmd/filters/add.go" as mod_cmd_filters_add_go
+}
+package "cmd/filters/filters.go" as file_cmd_filters_filters_go {
+  class "cmd/filters/filters.go" as mod_cmd_filters_filters_go
+    mod_cmd_filters_filters_go : init() : }
+}
+package "cmd/filters/list.go" as file_cmd_filters_list_go {
+  class "cmd/filters/list.go" as mod_cmd_filters_list_go
+}
+package "cmd/filters/remove.go" as file_cmd_filters_remove_go {
+  class "cmd/filters/remove.go" as mod_cmd_filters_remove_go
+}
+package "cmd/generate/generate.go" as file_cmd_generate_generate_go {
+  class "cmd/generate/generate.go" as mod_cmd_generate_generate_go
+    mod_cmd_generate_generate_go : printInstructions(isGui:oo, backendType:r) : }
+    mod_cmd_generate_generate_go : openbrowser(url:r) : }
+    mod_cmd_generate_generate_go : init() : }
+}
+package "cmd/integration/activate.go" as file_cmd_integration_activate_go {
+  class "cmd/integration/activate.go" as mod_cmd_integration_activate_go
+    mod_cmd_integration_activate_go : init() : }
+}
+package "cmd/integration/deactivate.go" as file_cmd_integration_deactivate_go {
+  class "cmd/integration/deactivate.go" as mod_cmd_integration_deactivate_go
+    mod_cmd_integration_deactivate_go : init() : }
+}
+package "cmd/integration/integration.go" as file_cmd_integration_integration_go {
+  class "cmd/integration/integration.go" as mod_cmd_integration_integration_go
+    mod_cmd_integration_integration_go : init() : }
+}
+package "cmd/integration/list.go" as file_cmd_integration_list_go {
+  class "cmd/integration/list.go" as mod_cmd_integration_list_go
+    mod_cmd_integration_list_go : init() : }
+}
+package "cmd/root.go" as file_cmd_root_go {
+  class "cmd/root.go" as mod_cmd_root_go
+    mod_cmd_root_go : getLegacyConfigFilePath() : r, rror
+    mod_cmd_root_go : getConfigFilePath() : r
+    mod_cmd_root_go : performConfigMigrationIfNeeded() : }
+    mod_cmd_root_go : initConfig() : }
+    note right of mod_cmd_root_go::initConfig()
+      // initConfig reads in config file and ENV variables if set.
+    end note
+
+}
+package "cmd/root_test.go" as file_cmd_root_test_go {
+  class "cmd/root_test.go" as mod_cmd_root_test_go
+    mod_cmd_root_test_go : TestInitConfig_VerboseFlag(t:T) : }
+    note right of mod_cmd_root_test_go::TestInitConfig_VerboseFlag(t:T)
+      // Test that verbose flag is correctly set in viper.
+    end note
+}
+package "cmd/serve/serve.go" as file_cmd_serve_serve_go {
+  class "cmd/serve/serve.go" as mod_cmd_serve_serve_go
+    mod_cmd_serve_serve_go : init() : }
+}
+package "cmd/version.go" as file_cmd_version_go {
+  class "cmd/version.go" as mod_cmd_version_go
+    mod_cmd_version_go : init() : }
+}
+package "main.go" as file_main_go {
+  class "main.go" as mod_main_go
+    mod_main_go : main() : }
+}
+package "pkg/ai/amazonbedrock.go" as file_pkg_ai_amazonbedrock_go {
+  class "pkg/ai/amazonbedrock.go" as mod_pkg_ai_amazonbedrock_go
+    mod_pkg_ai_amazonbedrock_go : validateInferenceProfileArn(inferenceProfile:r) : oo
+    mod_pkg_ai_amazonbedrock_go : validateModelArn(model:r) : oo
+    mod_pkg_ai_amazonbedrock_go : GetRegionOrDefault(region:r) : r
+
+    mod_pkg_ai_amazonbedrock_go : NewAmazonBedRockClient(models:rockMo) : RockC
+
+
+    mod_pkg_ai_amazonbedrock_go : (RockC) GetCompletion(ctx:Co, prompt:r) : o
+
+    mod_pkg_ai_amazonbedrock_go : (RockC) extractModelFromInferenceProfile(profile:u) : Prof
+
+    mod_pkg_ai_amazonbedrock_go : (RockC) getInferenceProfile(ctx:Co, inferenceProfileARN:r) : Prof
+
+    mod_pkg_ai_amazonbedrock_go : (RockC) Configure(config:f) : ur
+
+    mod_pkg_ai_amazonbedrock_go : (RockC) getModelFromString(model:r) : r
+
+}
+package "pkg/ai/amazonbedrock_mock_test.go" as file_pkg_ai_amazonbedrock_mock_test_go {
+  class "pkg/ai/amazonbedrock_mock_test.go" as mod_pkg_ai_amazonbedrock_mock_test_go
+    mod_pkg_ai_amazonbedrock_mock_test_go : TestBedrockInferenceProfileARNWithMocks(t:T) : }
+    note right of mod_pkg_ai_amazonbedrock_mock_test_go::TestBedrockInferenceProfileARNWithMocks(t:T)
+      // TestBedrockInferenceProfileARNWithMocks tests the inference profile ARN validation with mocks
+    end note
+    mod_pkg_ai_amazonbedrock_mock_test_go : (C) InvokeModel(ctx:Co, params:u, optFns:...) : Mo
+    mod_pkg_ai_amazonbedrock_mock_test_go : (rockC) GetInferenceProfile(ctx:Co, params:u, optFns:...) : Prof
+}
+package "pkg/ai/amazonbedrock_test.go" as file_pkg_ai_amazonbedrock_test_go {
+  class "pkg/ai/amazonbedrock_test.go" as mod_pkg_ai_amazonbedrock_test_go
+    mod_pkg_ai_amazonbedrock_test_go : TestValidateInferenceProfileArn(t:T) : }
+    mod_pkg_ai_amazonbedrock_test_go : TestDefaultModels(t:T) : }
+    note right of mod_pkg_ai_amazonbedrock_test_go::TestDefaultModels(t:T)
+      // TestDefaultModels tests that the client works with default models
+    end note
+    mod_pkg_ai_amazonbedrock_test_go : TestGetModelFromString(t:T) : }
+    mod_pkg_ai_amazonbedrock_test_go : TestBedrockGetCompletionInferenceProfile(t:T) : }
+    mod_pkg_ai_amazonbedrock_test_go : TestBedrockInferenceProfileARN(t:T) : }
+    mod_pkg_ai_amazonbedrock_test_go : TestBedrockInvalidModel(t:T) : }
+    mod_pkg_ai_amazonbedrock_test_go : TestBedrockModelConfig(t:T) : }
+}
+package "pkg/ai/amazonsagemaker.go" as file_pkg_ai_amazonsagemaker_go {
+  class "pkg/ai/amazonsagemaker.go" as mod_pkg_ai_amazonsagemaker_go
+    mod_pkg_ai_amazonsagemaker_go : (rAIC) GetName() : N
+    mod_pkg_ai_amazonsagemaker_go : (rAIC) GetCompletion(_:Co, prompt:r) : o
+    mod_pkg_ai_amazonsagemaker_go : (rAIC) Configure(config:f) : ur
+}
+package "pkg/ai/azureopenai.go" as file_pkg_ai_azureopenai_go {
+  class "pkg/ai/azureopenai.go" as mod_pkg_ai_azureopenai_go
+    mod_pkg_ai_azureopenai_go : (AIC) GetName() : N
+    mod_pkg_ai_azureopenai_go : (AIC) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_azureopenai_go : (AIC) Configure(config:f) : ur
+}
+package "pkg/ai/bedrock_interfaces.go" as file_pkg_ai_bedrock_interfaces_go {
+  class "pkg/ai/bedrock_interfaces.go" as mod_pkg_ai_bedrock_interfaces_go
+}
+package "pkg/ai/bedrock_support/completions.go" as file_pkg_ai_bedrock_support_completions_go {
+  class "pkg/ai/bedrock_support/completions.go" as mod_pkg_ai_bedrock_support_completions_go
+    mod_pkg_ai_bedrock_support_completions_go : IsModelSupported(modelName:r, supportedModels:r) : oo
+
+    mod_pkg_ai_bedrock_support_completions_go : (o) GetNovaCompletion(ctx:Co, prompt:r, modelConfig:f) : o
+    mod_pkg_ai_bedrock_support_completions_go : (o) GetDefaultCompletion(ctx:Co, prompt:r, modelConfig:f) : o
+    mod_pkg_ai_bedrock_support_completions_go : (o) GetCompletion(ctx:Co, prompt:r, modelConfig:f) : o
+
+    mod_pkg_ai_bedrock_support_completions_go : (AI21) GetCompletion(ctx:Co, prompt:r, modelConfig:f) : o
+    mod_pkg_ai_bedrock_support_completions_go : (o) GetCompletion(ctx:Co, prompt:r, modelConfig:f) : o
+    mod_pkg_ai_bedrock_support_completions_go : (o) GetCompletion(ctx:Co, prompt:r, modelConfig:f) : o
+}
+package "pkg/ai/bedrock_support/completions_test.go" as file_pkg_ai_bedrock_support_completions_test_go {
+  class "pkg/ai/bedrock_support/completions_test.go" as mod_pkg_ai_bedrock_support_completions_test_go
+    mod_pkg_ai_bedrock_support_completions_test_go : TestIsModelSupported(t:T) : }
+    mod_pkg_ai_bedrock_support_completions_test_go : TestAmazonCompletion_GetCompletion_Inference_Profile(t:T) : }
+    mod_pkg_ai_bedrock_support_completions_test_go : TestAmazonCompletion_GetCompletion_Default(t:T) : }
+    mod_pkg_ai_bedrock_support_completions_test_go : TestAmazonCompletion_GetCompletion_Nova(t:T) : }
+    mod_pkg_ai_bedrock_support_completions_test_go : TestAmazonCompletion_GetNovaCompletion(t:T) : }
+    mod_pkg_ai_bedrock_support_completions_test_go : TestAmazonCompletion_GetDefaultCompletion(t:T) : }
+    mod_pkg_ai_bedrock_support_completions_test_go : TestAI21_GetCompletion(t:T) : }
+    mod_pkg_ai_bedrock_support_completions_test_go : TestCohereCompletion_GetCompletion(t:T) : }
+}
+package "pkg/ai/bedrock_support/model.go" as file_pkg_ai_bedrock_support_model_go {
+  class "pkg/ai/bedrock_support/model.go" as mod_pkg_ai_bedrock_support_model_go
+}
+package "pkg/ai/bedrock_support/model_test.go" as file_pkg_ai_bedrock_support_model_test_go {
+  class "pkg/ai/bedrock_support/model_test.go" as mod_pkg_ai_bedrock_support_model_test_go
+    mod_pkg_ai_bedrock_support_model_test_go : TestBedrockModel(t:T) : }
+    mod_pkg_ai_bedrock_support_model_test_go : TestBedrockModelConfig(t:T) : }
+    mod_pkg_ai_bedrock_support_model_test_go : (o) ParseResponse(body:[]) : o
+    mod_pkg_ai_bedrock_support_model_test_go : (o) GetCompletion(ctx:Co, prompt:r, config:f) : o
+}
+package "pkg/ai/bedrock_support/responses.go" as file_pkg_ai_bedrock_support_responses_go {
+  class "pkg/ai/bedrock_support/responses.go" as mod_pkg_ai_bedrock_support_responses_go
+    mod_pkg_ai_bedrock_support_responses_go : (o) ParseResponse(rawResponse:[]) : o
+    mod_pkg_ai_bedrock_support_responses_go : (o) ParseResponse(rawResponse:[]) : o
+    mod_pkg_ai_bedrock_support_responses_go : (o) ParseResponse(rawResponse:[]) : o
+    mod_pkg_ai_bedrock_support_responses_go : (o) ParseResponse(rawResponse:[]) : o
+    mod_pkg_ai_bedrock_support_responses_go : (o) ParseResponse(rawResponse:[]) : o
+}
+package "pkg/ai/bedrock_support/responses_test.go" as file_pkg_ai_bedrock_support_responses_test_go {
+  class "pkg/ai/bedrock_support/responses_test.go" as mod_pkg_ai_bedrock_support_responses_test_go
+    mod_pkg_ai_bedrock_support_responses_test_go : TestNovaResponse_ParseResponse(t:T) : }
+    mod_pkg_ai_bedrock_support_responses_test_go : TestAmazonResponse_ParseResponse(t:T) : }
+    mod_pkg_ai_bedrock_support_responses_test_go : TestAI21Response_ParseResponse(t:T) : }
+    mod_pkg_ai_bedrock_support_responses_test_go : TestCohereResponse_ParseResponse(t:T) : }
+}
+package "pkg/ai/cohere.go" as file_pkg_ai_cohere_go {
+  class "pkg/ai/cohere.go" as mod_pkg_ai_cohere_go
+    mod_pkg_ai_cohere_go : (C) GetName() : N
+    mod_pkg_ai_cohere_go : (C) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_cohere_go : (C) Configure(config:f) : ur
+}
+package "pkg/ai/customrest.go" as file_pkg_ai_customrest_go {
+  class "pkg/ai/customrest.go" as mod_pkg_ai_customrest_go
+    mod_pkg_ai_customrest_go : (C) GetName() : N
+    mod_pkg_ai_customrest_go : (C) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_customrest_go : (C) Configure(config:f) : ur
+}
+package "pkg/ai/factory.go" as file_pkg_ai_factory_go {
+  class "pkg/ai/factory.go" as mod_pkg_ai_factory_go
+    mod_pkg_ai_factory_go : ResetTestImplementations() : }
+    note right of mod_pkg_ai_factory_go::ResetTestImplementations()
+      // Reset test implementations
+    end note
+    mod_pkg_ai_factory_go : SetTestConfigProvider(provider:r) : }
+    mod_pkg_ai_factory_go : SetTestAIClientFactory(factory:or) : }
+    note right of mod_pkg_ai_factory_go::SetTestAIClientFactory(factory:or)
+      // For testing - set the test implementations
+    end note
+    mod_pkg_ai_factory_go : GetConfigProvider() : r
+    note right of mod_pkg_ai_factory_go::GetConfigProvider()
+      // GetConfigProvider returns the test provider if set, otherwise the default
+    end note
+    mod_pkg_ai_factory_go : GetAIClientFactory() : or
+    note right of mod_pkg_ai_factory_go::GetAIClientFactory()
+      // GetAIClientFactory returns the test factory if set, otherwise the default
+    end note
+    mod_pkg_ai_factory_go : (r) UnmarshalKey(key:r, rawVal:{}) : K
+    mod_pkg_ai_factory_go : (or) NewClient(provider:r) : wC
+
+}
+package "pkg/ai/googlegenai.go" as file_pkg_ai_googlegenai_go {
+  class "pkg/ai/googlegenai.go" as mod_pkg_ai_googlegenai_go
+    mod_pkg_ai_googlegenai_go : (AIC) Close() : o
+    mod_pkg_ai_googlegenai_go : (AIC) GetName() : N
+    mod_pkg_ai_googlegenai_go : (AIC) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_googlegenai_go : (AIC) Configure(config:f) : ur
+}
+package "pkg/ai/googlevertexai.go" as file_pkg_ai_googlevertexai_go {
+  class "pkg/ai/googlevertexai.go" as mod_pkg_ai_googlevertexai_go
+    mod_pkg_ai_googlevertexai_go : GetVertexAIRegionOrDefault(region:r) : r
+    note right of mod_pkg_ai_googlevertexai_go::GetVertexAIRegionOrDefault(region:r)
+      // GetModelOrDefault check config region
+    end note
+    mod_pkg_ai_googlevertexai_go : GetVertexAIModelOrDefault(model:r) : r
+    note right of mod_pkg_ai_googlevertexai_go::GetVertexAIModelOrDefault(model:r)
+      // GetModelOrDefault check config model
+    end note
+    mod_pkg_ai_googlevertexai_go : (AIC) Close() : o
+    mod_pkg_ai_googlevertexai_go : (AIC) GetName() : N
+    mod_pkg_ai_googlevertexai_go : (AIC) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_googlevertexai_go : (AIC) Configure(config:f) : ur
+}
+package "pkg/ai/huggingface.go" as file_pkg_ai_huggingface_go {
+  class "pkg/ai/huggingface.go" as mod_pkg_ai_huggingface_go
+    mod_pkg_ai_huggingface_go : (C) GetName() : N
+    mod_pkg_ai_huggingface_go : (C) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_huggingface_go : (C) Configure(config:f) : ur
+}
+package "pkg/ai/iai.go" as file_pkg_ai_iai_go {
+  class "pkg/ai/iai.go" as mod_pkg_ai_iai_go
+    mod_pkg_ai_iai_go : NeedPassword(backend:r) : oo
+    mod_pkg_ai_iai_go : NewClient(provider:r) : IAI
+    mod_pkg_ai_iai_go : (r) GetCustomHeaders() : r
+    mod_pkg_ai_iai_go : (r) GetOrganizationId() : I
+    mod_pkg_ai_iai_go : (r) GetCompartmentId() : I
+    mod_pkg_ai_iai_go : (r) GetProviderId() : rI
+    mod_pkg_ai_iai_go : (r) GetProviderRegion() : o
+    mod_pkg_ai_iai_go : (r) GetTemperature() : ur
+    mod_pkg_ai_iai_go : (r) GetEngine() : E
+    mod_pkg_ai_iai_go : (r) GetModel() : Mo
+    mod_pkg_ai_iai_go : (r) GetPassword() : wor
+    mod_pkg_ai_iai_go : (r) GetMaxTokens() : Tok
+    mod_pkg_ai_iai_go : (r) GetTopK() : K
+    mod_pkg_ai_iai_go : (r) GetTopP() : P
+    mod_pkg_ai_iai_go : (r) GetEndpointName() : N
+    mod_pkg_ai_iai_go : (r) GetProxyEndpoint() : o
+    mod_pkg_ai_iai_go : (r) GetBaseURL() : URL
+    mod_pkg_ai_iai_go : (r) Close() : o
+}
+package "pkg/ai/interactive/interactive.go" as file_pkg_ai_interactive_interactive_go {
+  class "pkg/ai/interactive/interactive.go" as mod_pkg_ai_interactive_interactive_go
+    mod_pkg_ai_interactive_interactive_go : NewInteractionRunner(config:A, contextWindow:[]) : r
+    mod_pkg_ai_interactive_interactive_go : (r) StartInteraction() : o
+}
+package "pkg/ai/localai.go" as file_pkg_ai_localai_go {
+  class "pkg/ai/localai.go" as mod_pkg_ai_localai_go
+    mod_pkg_ai_localai_go : (AIC) GetName() : N
+}
+package "pkg/ai/noopai.go" as file_pkg_ai_noopai_go {
+  class "pkg/ai/noopai.go" as mod_pkg_ai_noopai_go
+    mod_pkg_ai_noopai_go : (AIC) GetName() : N
+    mod_pkg_ai_noopai_go : (AIC) GetCompletion(_:Co, prompt:r) : o
+    mod_pkg_ai_noopai_go : (AIC) Configure(_:f) : ur
+}
+package "pkg/ai/ocigenai.go" as file_pkg_ai_ocigenai_go {
+  class "pkg/ai/ocigenai.go" as mod_pkg_ai_ocigenai_go
+    mod_pkg_ai_ocigenai_go : extractGeneratedText(llmInferenceResponse:o) : r, rror
+    mod_pkg_ai_ocigenai_go : (AIC) getVendor() : or
+    mod_pkg_ai_ocigenai_go : (AIC) isBaseModel() : Mo
+    mod_pkg_ai_ocigenai_go : (AIC) getModel(provider:r) : Mo
+    mod_pkg_ai_ocigenai_go : (AIC) getServingMode() : Mo
+    mod_pkg_ai_ocigenai_go : (AIC) getChatModelRequest(prompt:r) : qu
+    mod_pkg_ai_ocigenai_go : (AIC) newChatRequest(prompt:r) : qu
+    mod_pkg_ai_ocigenai_go : (AIC) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_ocigenai_go : (AIC) Configure(config:f) : ur
+    mod_pkg_ai_ocigenai_go : (AIC) GetName() : N
+}
+package "pkg/ai/ollama.go" as file_pkg_ai_ollama_go {
+  class "pkg/ai/ollama.go" as mod_pkg_ai_ollama_go
+    mod_pkg_ai_ollama_go : (C) GetName() : N
+    mod_pkg_ai_ollama_go : (C) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_ollama_go : (C) Configure(config:f) : ur
+}
+package "pkg/ai/openai.go" as file_pkg_ai_openai_go {
+  class "pkg/ai/openai.go" as mod_pkg_ai_openai_go
+    mod_pkg_ai_openai_go : (or) RoundTrip(req:qu) : Tr
+
+    mod_pkg_ai_openai_go : (AIC) GetName() : N
+    mod_pkg_ai_openai_go : (AIC) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_openai_go : (AIC) Configure(config:f) : ur
+}
+package "pkg/ai/openai_header_transport_test.go" as file_pkg_ai_openai_header_transport_test_go {
+  class "pkg/ai/openai_header_transport_test.go" as mod_pkg_ai_openai_header_transport_test_go
+    mod_pkg_ai_openai_header_transport_test_go : TestOpenAIClient_CustomHeaders(t:T) : }
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetProviderRegion() : o
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetProviderId() : rI
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetEngine() : E
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetEndpointName() : N
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetMaxTokens() : Tok
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetTopK() : K
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetCompartmentId() : I
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetTopP() : P
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetTemperature() : ur
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetModel() : Mo
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetCustomHeaders() : r
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetBaseURL() : URL
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetProxyEndpoint() : o
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetOrganizationId() : I
+    mod_pkg_ai_openai_header_transport_test_go : (f) GetPassword() : wor
+}
+package "pkg/ai/prompts.go" as file_pkg_ai_prompts_go {
+  class "pkg/ai/prompts.go" as mod_pkg_ai_prompts_go
+}
+package "pkg/ai/watsonxai.go" as file_pkg_ai_watsonxai_go {
+  class "pkg/ai/watsonxai.go" as mod_pkg_ai_watsonxai_go
+    mod_pkg_ai_watsonxai_go : (AIC) GetName() : N
+    mod_pkg_ai_watsonxai_go : (AIC) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_ai_watsonxai_go : (AIC) Configure(config:f) : ur
+}
+package "pkg/analysis/analysis.go" as file_pkg_analysis_analysis_go {
+  class "pkg/analysis/analysis.go" as mod_pkg_analysis_analysis_go
+    mod_pkg_analysis_analysis_go : NewAnalysis(backend:r, language:r, filters:r, namespace:r, labelSelector:r, noCache:oo, explain:oo, maxConcurrency:int, withDoc:oo, interactiveMode:oo, httpHeaders:r, withStats:oo) : A, rror
+    mod_pkg_analysis_analysis_go : (A) Close() : o
+    mod_pkg_analysis_analysis_go : (A) getAIResultForSanitizedFailures(texts:r, promptTmpl:r) : ur
+    mod_pkg_analysis_analysis_go : (A) GetAIResults(output:r, anonymize:oo) : u
+    mod_pkg_analysis_analysis_go : (A) executeAnalyzer(analyzer:r, filter:r, analyzerConfig:r, semaphore:{}, wg:Grou, mutex:Mu) : r
+    mod_pkg_analysis_analysis_go : (A) RunAnalysis() : A
+    mod_pkg_analysis_analysis_go : (A) RunCustomAnalysis() : A
+    mod_pkg_analysis_analysis_go : (A) CustomAnalyzersAreAvailable() : Av
+}
+package "pkg/analysis/analysis_test.go" as file_pkg_analysis_analysis_test_go {
+  class "pkg/analysis/analysis_test.go" as mod_pkg_analysis_analysis_test_go
+    mod_pkg_analysis_analysis_test_go : TestVerbose_GetAIResults(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestVerbose_GetAIResults(t:T)
+      // Test: Verbose output in GetAIResults
+    end note
+    mod_pkg_analysis_analysis_test_go : TestVerbose_RunCustomAnalysisWithCustomAnalyzer(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestVerbose_RunCustomAnalysisWithCustomAnalyzer(t:T)
+      // Test: Verbose output in RunCustomAnalysis with custom analyzer
+    end note
+    mod_pkg_analysis_analysis_test_go : TestVerbose_RunCustomAnalysisWithoutCustomAnalyzer(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestVerbose_RunCustomAnalysisWithoutCustomAnalyzer(t:T)
+      // Test: Verbose output in RunCustomAnalysis without custom analyzer
+    end note
+    mod_pkg_analysis_analysis_test_go : TestVerbose_RunAnalysisWithoutFilter(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestVerbose_RunAnalysisWithoutFilter(t:T)
+      // Test: Verbose output in RunAnalysis without any filter (run all core analyzers)
+    end note
+    mod_pkg_analysis_analysis_test_go : TestVerbose_RunAnalysisWithActiveFilter(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestVerbose_RunAnalysisWithActiveFilter(t:T)
+      // Test: Verbose output in RunAnalysis with active filter
+    end note
+    mod_pkg_analysis_analysis_test_go : TestVerbose_RunAnalysisWithFilter(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestVerbose_RunAnalysisWithFilter(t:T)
+      // Test: Verbose output in RunAnalysis with filter flag
+    end note
+    mod_pkg_analysis_analysis_test_go : TestVerbose_NewAnalysisWithExplain(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestVerbose_NewAnalysisWithExplain(t:T)
+      // Test: Verbose output in NewAnalysis with explain=true
+    end note
+    mod_pkg_analysis_analysis_test_go : TestVerbose_NewAnalysisWithoutExplain(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestVerbose_NewAnalysisWithoutExplain(t:T)
+      // Test: Verbose output in NewAnalysis with explain=false
+    end note
+    mod_pkg_analysis_analysis_test_go : TestGetAIResultForSanitizedFailures(t:T) : }
+    mod_pkg_analysis_analysis_test_go : TestNewAnalysis(t:T) : }
+    mod_pkg_analysis_analysis_test_go : TestAnalysis_MultipleProblemJsonOutput(t:T) : }
+    mod_pkg_analysis_analysis_test_go : TestAnalysis_ProblemJsonOutput(t:T) : }
+    mod_pkg_analysis_analysis_test_go : TestAnalysis_NoProblemJsonOutput(t:T) : }
+    mod_pkg_analysis_analysis_test_go : TestAnalysis_RunAnalysisActiveFilter(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestAnalysis_RunAnalysisActiveFilter(t:T)
+      // Test:  Filter logic with Active Filter
+    end note
+    mod_pkg_analysis_analysis_test_go : TestAnalysis_RunAnalysisWithFilter(t:T) : }
+    note right of mod_pkg_analysis_analysis_test_go::TestAnalysis_RunAnalysisWithFilter(t:T)
+      // Test: Filter logic with running different Analyzers
+    end note
+    mod_pkg_analysis_analysis_test_go : analysis_RunAnalysisFilterTester(t:T, filterFlag:r) : u
+
+    mod_pkg_analysis_analysis_test_go : getTypeName(i:{}) : r
+    note right of mod_pkg_analysis_analysis_test_go::getTypeName(i:{})
+      // helper function: get type name of an analyzer
+    end note
+}
+package "pkg/analysis/output.go" as file_pkg_analysis_output_go {
+  class "pkg/analysis/output.go" as mod_pkg_analysis_output_go
+    mod_pkg_analysis_output_go : getOutputFormats() : r
+    mod_pkg_analysis_output_go : (A) textOutput() : u
+    mod_pkg_analysis_output_go : (A) PrintStats() : S
+    mod_pkg_analysis_output_go : (A) jsonOutput() : u
+    mod_pkg_analysis_output_go : (A) PrintOutput(format:r) : u
+}
+package "pkg/analysis/output_test.go" as file_pkg_analysis_output_test_go {
+  class "pkg/analysis/output_test.go" as mod_pkg_analysis_output_test_go
+    mod_pkg_analysis_output_test_go : TestPrintOutput(t:T) : }
+}
+package "pkg/analyzer/analyzer.go" as file_pkg_analyzer_analyzer_go {
+  class "pkg/analyzer/analyzer.go" as mod_pkg_analyzer_analyzer_go
+    mod_pkg_analyzer_analyzer_go : GetAnalyzerMap() : r, r
+    mod_pkg_analyzer_analyzer_go : ListFilters() : r, r, r
+}
+package "pkg/analyzer/catalogsource.go" as file_pkg_analyzer_catalogsource_go {
+  class "pkg/analyzer/catalogsource.go" as mod_pkg_analyzer_catalogsource_go
+    mod_pkg_analyzer_catalogsource_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/catalogsource_test.go" as file_pkg_analyzer_catalogsource_test_go {
+  class "pkg/analyzer/catalogsource_test.go" as mod_pkg_analyzer_catalogsource_test_go
+    mod_pkg_analyzer_catalogsource_test_go : TestCatalogSourceAnalyzer_HealthyOrNoState_Ignored(t:T) : }
+    mod_pkg_analyzer_catalogsource_test_go : TestCatalogSourceAnalyzer_UnhealthyState_ReturnsResult(t:T) : }
+}
+package "pkg/analyzer/clustercatalog.go" as file_pkg_analyzer_clustercatalog_go {
+  class "pkg/analyzer/clustercatalog.go" as mod_pkg_analyzer_clustercatalog_go
+    mod_pkg_analyzer_clustercatalog_go : isValidImageRef(ref:r) : oo
+    note right of mod_pkg_analyzer_clustercatalog_go::isValidImageRef(ref:r)
+      // isValidImageRef does a simple regex check to validate image refs
+    end note
+    mod_pkg_analyzer_clustercatalog_go : ValidateClusterCatalog(failures:ur, catalog:o) : ur, rror
+    mod_pkg_analyzer_clustercatalog_go : addCatalogFailure(failures:ur, catalogName:r, err:rror) : ur
+    mod_pkg_analyzer_clustercatalog_go : addCatalogConditionFailure(failures:ur, catalogName:r, catalogCondition:o) : ur
+    mod_pkg_analyzer_clustercatalog_go : ConvertToClusterCatalog(u:ur) : o, rror
+    mod_pkg_analyzer_clustercatalog_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/clustercatalog_test.go" as file_pkg_analyzer_clustercatalog_test_go {
+  class "pkg/analyzer/clustercatalog_test.go" as mod_pkg_analyzer_clustercatalog_test_go
+    mod_pkg_analyzer_clustercatalog_test_go : TestClusterCatalogAnalyzer(t:T) : }
+}
+package "pkg/analyzer/clusterextension.go" as file_pkg_analyzer_clusterextension_go {
+  class "pkg/analyzer/clusterextension.go" as mod_pkg_analyzer_clusterextension_go
+    mod_pkg_analyzer_clusterextension_go : ValidateClusterExtension(failures:ur, extension:o) : ur, rror
+    mod_pkg_analyzer_clusterextension_go : addExtensionFailure(failures:ur, extensionName:r, err:rror) : ur
+    mod_pkg_analyzer_clusterextension_go : addExtensionConditionFailure(failures:ur, extensionName:r, extensionCondition:o) : ur
+    mod_pkg_analyzer_clusterextension_go : ConvertToClusterExtension(u:ur) : o, rror
+    mod_pkg_analyzer_clusterextension_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/clusterextension_test.go" as file_pkg_analyzer_clusterextension_test_go {
+  class "pkg/analyzer/clusterextension_test.go" as mod_pkg_analyzer_clusterextension_test_go
+    mod_pkg_analyzer_clusterextension_test_go : TestClusterExtensionAnalyzer(t:T) : }
+}
+package "pkg/analyzer/clusterserviceversion.go" as file_pkg_analyzer_clusterserviceversion_go {
+  class "pkg/analyzer/clusterserviceversion.go" as mod_pkg_analyzer_clusterserviceversion_go
+    mod_pkg_analyzer_clusterserviceversion_go : pickWorstCondition(conds:{}) : r
+    note right of mod_pkg_analyzer_clusterserviceversion_go::pickWorstCondition(conds:{})
+      // reaproveitamos o heurístico já usado em outros pontos
+    end note
+    mod_pkg_analyzer_clusterserviceversion_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/clusterserviceversion_test.go" as file_pkg_analyzer_clusterserviceversion_test_go {
+  class "pkg/analyzer/clusterserviceversion_test.go" as mod_pkg_analyzer_clusterserviceversion_test_go
+    mod_pkg_analyzer_clusterserviceversion_test_go : TestClusterServiceVersionAnalyzer(t:T) : }
+}
+package "pkg/analyzer/configmap.go" as file_pkg_analyzer_configmap_go {
+  class "pkg/analyzer/configmap.go" as mod_pkg_analyzer_configmap_go
+    mod_pkg_analyzer_configmap_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/configmap_test.go" as file_pkg_analyzer_configmap_test_go {
+  class "pkg/analyzer/configmap_test.go" as mod_pkg_analyzer_configmap_test_go
+    mod_pkg_analyzer_configmap_test_go : TestConfigMapAnalyzer(t:T) : }
+}
+package "pkg/analyzer/cronjob.go" as file_pkg_analyzer_cronjob_go {
+  class "pkg/analyzer/cronjob.go" as mod_pkg_analyzer_cronjob_go
+    mod_pkg_analyzer_cronjob_go : CheckCronScheduleIsValid(schedule:r) : oo, rror
+    note right of mod_pkg_analyzer_cronjob_go::CheckCronScheduleIsValid(schedule:r)
+      // Check CRON schedule format
+    end note
+    mod_pkg_analyzer_cronjob_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/cronjob_test.go" as file_pkg_analyzer_cronjob_test_go {
+  class "pkg/analyzer/cronjob_test.go" as mod_pkg_analyzer_cronjob_test_go
+    mod_pkg_analyzer_cronjob_test_go : TestCheckCronScheduleIsValid(t:T) : }
+    mod_pkg_analyzer_cronjob_test_go : TestCronJobAnalyzerLabelSelector(t:T) : }
+    mod_pkg_analyzer_cronjob_test_go : TestCronJobAnalyzer(t:T) : }
+}
+package "pkg/analyzer/deployment.go" as file_pkg_analyzer_deployment_go {
+  class "pkg/analyzer/deployment.go" as mod_pkg_analyzer_deployment_go
+    mod_pkg_analyzer_deployment_go : (r) Analyze(a:r) : z
+
+}
+package "pkg/analyzer/deployment_test.go" as file_pkg_analyzer_deployment_test_go {
+  class "pkg/analyzer/deployment_test.go" as mod_pkg_analyzer_deployment_test_go
+    mod_pkg_analyzer_deployment_test_go : TestDeploymentAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_deployment_test_go : TestDeploymentAnalyzerNamespaceFiltering(t:T) : }
+    mod_pkg_analyzer_deployment_test_go : TestDeploymentAnalyzer(t:T) : }
+}
+package "pkg/analyzer/events_test.go" as file_pkg_analyzer_events_test_go {
+  class "pkg/analyzer/events_test.go" as mod_pkg_analyzer_events_test_go
+    mod_pkg_analyzer_events_test_go : TestFetchLatestEvent(t:T) : }
+    mod_pkg_analyzer_events_test_go : FetchLatestEvent(ctx:Co, client:c, namespace:,, eventName:,) : Ev, rror
+}
+package "pkg/analyzer/gateway.go" as file_pkg_analyzer_gateway_go {
+  class "pkg/analyzer/gateway.go" as mod_pkg_analyzer_gateway_go
+    mod_pkg_analyzer_gateway_go : (r) Analyze(a:r) : z
+
+}
+package "pkg/analyzer/gateway_test.go" as file_pkg_analyzer_gateway_test_go {
+  class "pkg/analyzer/gateway_test.go" as mod_pkg_analyzer_gateway_test_go
+    mod_pkg_analyzer_gateway_test_go : TestGatewayAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_gateway_test_go : TestStatusGatewayAnalyzer(t:T) : }
+    mod_pkg_analyzer_gateway_test_go : TestMissingClassGatewayAnalyzer(t:T) : }
+    mod_pkg_analyzer_gateway_test_go : TestGatewayAnalyzer(t:T) : }
+    mod_pkg_analyzer_gateway_test_go : BuildGateway(className:N, status:u, labels:r) : w
+    mod_pkg_analyzer_gateway_test_go : BuildGatewayClass(name:r) : C
+}
+package "pkg/analyzer/gatewayclass.go" as file_pkg_analyzer_gatewayclass_go {
+  class "pkg/analyzer/gatewayclass.go" as mod_pkg_analyzer_gatewayclass_go
+    mod_pkg_analyzer_gatewayclass_go : (r) Analyze(a:r) : z
+
+}
+package "pkg/analyzer/gatewayclass_test.go" as file_pkg_analyzer_gatewayclass_test_go {
+  class "pkg/analyzer/gatewayclass_test.go" as mod_pkg_analyzer_gatewayclass_test_go
+    mod_pkg_analyzer_gatewayclass_test_go : TestGatewayClassAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_gatewayclass_test_go : TestGatewayClassAnalyzer(t:T) : }
+    note right of mod_pkg_analyzer_gatewayclass_test_go::TestGatewayClassAnalyzer(t:T)
+      // Testing with the fake dynamic client if GatewayClasses have an accepted status
+    end note
+}
+package "pkg/analyzer/hpa.go" as file_pkg_analyzer_hpa_go {
+  class "pkg/analyzer/hpa.go" as mod_pkg_analyzer_hpa_go
+    mod_pkg_analyzer_hpa_go : (fo) GetPodSpec() : c
+
+    mod_pkg_analyzer_hpa_go : (fo) GetPodSpec() : c
+    mod_pkg_analyzer_hpa_go : (fo) GetPodSpec() : c
+    mod_pkg_analyzer_hpa_go : (fo) GetPodSpec() : c
+    mod_pkg_analyzer_hpa_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/hpa_test.go" as file_pkg_analyzer_hpa_test_go {
+  class "pkg/analyzer/hpa_test.go" as mod_pkg_analyzer_hpa_test_go
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerStatusScalingLimitedError(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerStatusField(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerStatusFieldScalingLimited(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerStatusFieldScalingActive(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerStatusFieldAbleToScale(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerNamespaceFiltering(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerWithExistingScaleTargetRefWithoutSpecifyingResources(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerWithExistingScaleTargetRefAsStatefulSet(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerWithExistingScaleTargetRefAsReplicaSet(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerWithExistingScaleTargetRefAsReplicationController(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerWithExistingScaleTargetRefAsDeployment(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerWithNonExistentScaleTargetRef(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerWithUnsuportedScaleTargetRef(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzerWithMultipleHPA(t:T) : }
+    mod_pkg_analyzer_hpa_test_go : TestHPAAnalyzer(t:T) : }
+}
+package "pkg/analyzer/httproute.go" as file_pkg_analyzer_httproute_go {
+  class "pkg/analyzer/httproute.go" as mod_pkg_analyzer_httproute_go
+    mod_pkg_analyzer_httproute_go : (r) Analyze(a:r) : z
+
+}
+package "pkg/analyzer/httproute_test.go" as file_pkg_analyzer_httproute_test_go {
+  class "pkg/analyzer/httproute_test.go" as mod_pkg_analyzer_httproute_test_go
+    mod_pkg_analyzer_httproute_test_go : TestSvcDifferentPortHTTRouteAnalyzer(t:T) : }
+    mod_pkg_analyzer_httproute_test_go : TestSvcMissingHTTRouteAnalyzer(t:T) : }
+    mod_pkg_analyzer_httproute_test_go : TestGWConfigSelectorHTTRouteAnalyzer(t:T) : }
+    mod_pkg_analyzer_httproute_test_go : TestGWConfigSameHTTRouteAnalyzer(t:T) : }
+    mod_pkg_analyzer_httproute_test_go : TestGWMissiningHTTRouteAnalyzer(t:T) : }
+    note right of mod_pkg_analyzer_httproute_test_go::TestGWMissiningHTTRouteAnalyzer(t:T)
+      /*
+      	Testing different cases
+      
+      1. Gateway doesn't exist or at least doesn't exist in the same namespace
+      2. Gateway exists in different namespace, is configured in httproute's spec
+      and Gateway's configuration is allowing only from its same namespace
+      3. Gateway exists in the same namespace but has selectors different from route's labels
+      4. BackendRef is pointing to a non existent Service
+      5. BackendRef's port and Service Port are different
+      */
+    end note
+    mod_pkg_analyzer_httproute_test_go : BuildHTTPRoute(backendName:,, gtwName:,, gtwNamespace:c, svcPort:r, namespace:r) : HTTPRou
+    mod_pkg_analyzer_httproute_test_go : BuildRouteGateway(namespace:,, name:,, fromNamespaceref:,) : w
+}
+package "pkg/analyzer/ingress.go" as file_pkg_analyzer_ingress_go {
+  class "pkg/analyzer/ingress.go" as mod_pkg_analyzer_ingress_go
+    mod_pkg_analyzer_ingress_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/ingress_test.go" as file_pkg_analyzer_ingress_test_go {
+  class "pkg/analyzer/ingress_test.go" as mod_pkg_analyzer_ingress_test_go
+    mod_pkg_analyzer_ingress_test_go : pathTypePtr(p:T) : T
+    mod_pkg_analyzer_ingress_test_go : strPtr(s:r) : r
+    note right of mod_pkg_analyzer_ingress_test_go::strPtr(s:r)
+      // Helper functions
+    end note
+    mod_pkg_analyzer_ingress_test_go : TestIngressAnalyzerLabelSelector(t:T) : }
+    mod_pkg_analyzer_ingress_test_go : TestIngressAnalyzer(t:T) : }
+}
+package "pkg/analyzer/installplan_test.go" as file_pkg_analyzer_installplan_test_go {
+  class "pkg/analyzer/installplan_test.go" as mod_pkg_analyzer_installplan_test_go
+    mod_pkg_analyzer_installplan_test_go : TestInstallPlanAnalyzer(t:T) : }
+}
+package "pkg/analyzer/instalplan.go" as file_pkg_analyzer_instalplan_go {
+  class "pkg/analyzer/instalplan.go" as mod_pkg_analyzer_instalplan_go
+    mod_pkg_analyzer_instalplan_go : firstCondStr(u:ur, field:r) : r
+    mod_pkg_analyzer_instalplan_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/job.go" as file_pkg_analyzer_job_go {
+  class "pkg/analyzer/job.go" as mod_pkg_analyzer_job_go
+    mod_pkg_analyzer_job_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/job_test.go" as file_pkg_analyzer_job_test_go {
+  class "pkg/analyzer/job_test.go" as mod_pkg_analyzer_job_test_go
+    mod_pkg_analyzer_job_test_go : TestJobAnalyzerLabelSelector(t:T) : }
+    mod_pkg_analyzer_job_test_go : TestJobAnalyzer(t:T) : }
+}
+package "pkg/analyzer/log.go" as file_pkg_analyzer_log_go {
+  class "pkg/analyzer/log.go" as mod_pkg_analyzer_log_go
+    mod_pkg_analyzer_log_go : printErrorLines(logs:r, errorPattern:R) : r
+    mod_pkg_analyzer_log_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/log_test.go" as file_pkg_analyzer_log_test_go {
+  class "pkg/analyzer/log_test.go" as mod_pkg_analyzer_log_test_go
+    mod_pkg_analyzer_log_test_go : TestLogAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_log_test_go : TestLogAnalyzer(t:T) : }
+}
+package "pkg/analyzer/mutating_webhook.go" as file_pkg_analyzer_mutating_webhook_go {
+  class "pkg/analyzer/mutating_webhook.go" as mod_pkg_analyzer_mutating_webhook_go
+    mod_pkg_analyzer_mutating_webhook_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/mutating_webhook_test.go" as file_pkg_analyzer_mutating_webhook_test_go {
+  class "pkg/analyzer/mutating_webhook_test.go" as mod_pkg_analyzer_mutating_webhook_test_go
+    mod_pkg_analyzer_mutating_webhook_test_go : TestMutatingWebhookAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_mutating_webhook_test_go : TestMutatingWebhookAnalyzer(t:T) : }
+}
+package "pkg/analyzer/netpol.go" as file_pkg_analyzer_netpol_go {
+  class "pkg/analyzer/netpol.go" as mod_pkg_analyzer_netpol_go
+    mod_pkg_analyzer_netpol_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/netpol_test.go" as file_pkg_analyzer_netpol_test_go {
+  class "pkg/analyzer/netpol_test.go" as mod_pkg_analyzer_netpol_test_go
+    mod_pkg_analyzer_netpol_test_go : TestNetpolLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_netpol_test_go : TestNetpolNoPodsNamespaceFiltering(t:T) : }
+    mod_pkg_analyzer_netpol_test_go : TestNetpolWithPod(t:T) : }
+    mod_pkg_analyzer_netpol_test_go : TestNetpolNoPods(t:T) : }
+}
+package "pkg/analyzer/node.go" as file_pkg_analyzer_node_go {
+  class "pkg/analyzer/node.go" as mod_pkg_analyzer_node_go
+    mod_pkg_analyzer_node_go : isKnownNodeConditionType(conditionType:T) : oo
+    note right of mod_pkg_analyzer_node_go::isKnownNodeConditionType(conditionType:T)
+      // isKnownNodeConditionType checks if the condition type is a standard Kubernetes node condition
+    end note
+    mod_pkg_analyzer_node_go : addNodeConditionFailure(failures:ur, nodeName:r, nodeCondition:o) : ur
+    mod_pkg_analyzer_node_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/node_test.go" as file_pkg_analyzer_node_test_go {
+  class "pkg/analyzer/node_test.go" as mod_pkg_analyzer_node_test_go
+    mod_pkg_analyzer_node_test_go : TestNodeAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_node_test_go : TestNodeAnalyzer(t:T) : }
+}
+package "pkg/analyzer/operatorgroup.go" as file_pkg_analyzer_operatorgroup_go {
+  class "pkg/analyzer/operatorgroup.go" as mod_pkg_analyzer_operatorgroup_go
+    mod_pkg_analyzer_operatorgroup_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/operatorgroup_test.go" as file_pkg_analyzer_operatorgroup_test_go {
+  class "pkg/analyzer/operatorgroup_test.go" as mod_pkg_analyzer_operatorgroup_test_go
+    mod_pkg_analyzer_operatorgroup_test_go : TestOperatorGroupAnalyzer(t:T) : }
+}
+package "pkg/analyzer/pdb.go" as file_pkg_analyzer_pdb_go {
+  class "pkg/analyzer/pdb.go" as mod_pkg_analyzer_pdb_go
+    mod_pkg_analyzer_pdb_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/pdb_test.go" as file_pkg_analyzer_pdb_test_go {
+  class "pkg/analyzer/pdb_test.go" as mod_pkg_analyzer_pdb_test_go
+    mod_pkg_analyzer_pdb_test_go : TestPodDisruptionBudgetAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_pdb_test_go : TestPodDisruptionBudgetAnalyzer(t:T) : }
+}
+package "pkg/analyzer/pod.go" as file_pkg_analyzer_pod_go {
+  class "pkg/analyzer/pod.go" as mod_pkg_analyzer_pod_go
+    mod_pkg_analyzer_pod_go : isEvtErrorReason(reason:r) : oo
+    mod_pkg_analyzer_pod_go : isErrorReason(reason:r) : oo
+    mod_pkg_analyzer_pod_go : analyzeContainerStatusFailures(a:r, statuses:u, name:r, namespace:r, statusPhase:r) : ur
+    mod_pkg_analyzer_pod_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/pod_test.go" as file_pkg_analyzer_pod_test_go {
+  class "pkg/analyzer/pod_test.go" as mod_pkg_analyzer_pod_test_go
+    mod_pkg_analyzer_pod_test_go : TestPodAnalyzer(t:T) : }
+}
+package "pkg/analyzer/pvc.go" as file_pkg_analyzer_pvc_go {
+  class "pkg/analyzer/pvc.go" as mod_pkg_analyzer_pvc_go
+    mod_pkg_analyzer_pvc_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/pvc_test.go" as file_pkg_analyzer_pvc_test_go {
+  class "pkg/analyzer/pvc_test.go" as mod_pkg_analyzer_pvc_test_go
+    mod_pkg_analyzer_pvc_test_go : TestPvcAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_pvc_test_go : TestPersistentVolumeClaimAnalyzer(t:T) : }
+}
+package "pkg/analyzer/rs.go" as file_pkg_analyzer_rs_go {
+  class "pkg/analyzer/rs.go" as mod_pkg_analyzer_rs_go
+    mod_pkg_analyzer_rs_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/rs_test.go" as file_pkg_analyzer_rs_test_go {
+  class "pkg/analyzer/rs_test.go" as mod_pkg_analyzer_rs_test_go
+    mod_pkg_analyzer_rs_test_go : TestReplicaSetAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_rs_test_go : TestReplicaSetAnalyzer(t:T) : }
+}
+package "pkg/analyzer/security.go" as file_pkg_analyzer_security_go {
+  class "pkg/analyzer/security.go" as mod_pkg_analyzer_security_go
+    mod_pkg_analyzer_security_go : containsWildcard(slice:r) : oo
+    mod_pkg_analyzer_security_go : analyzePodSecurityContexts(a:r) : u, rror
+    mod_pkg_analyzer_security_go : analyzeRoleBindings(a:r) : u, rror
+    mod_pkg_analyzer_security_go : analyzeServiceAccounts(a:r) : u, rror
+    mod_pkg_analyzer_security_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/security_test.go" as file_pkg_analyzer_security_test_go {
+  class "pkg/analyzer/security_test.go" as mod_pkg_analyzer_security_test_go
+    mod_pkg_analyzer_security_test_go : TestSecurityAnalyzer(t:T) : }
+}
+package "pkg/analyzer/service.go" as file_pkg_analyzer_service_go {
+  class "pkg/analyzer/service.go" as mod_pkg_analyzer_service_go
+    mod_pkg_analyzer_service_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/service_test.go" as file_pkg_analyzer_service_test_go {
+  class "pkg/analyzer/service_test.go" as mod_pkg_analyzer_service_test_go
+    mod_pkg_analyzer_service_test_go : TestServiceAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_service_test_go : TestServiceAnalyzer(t:T) : }
+}
+package "pkg/analyzer/statefulset.go" as file_pkg_analyzer_statefulset_go {
+  class "pkg/analyzer/statefulset.go" as mod_pkg_analyzer_statefulset_go
+    mod_pkg_analyzer_statefulset_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/statefulset_test.go" as file_pkg_analyzer_statefulset_test_go {
+  class "pkg/analyzer/statefulset_test.go" as mod_pkg_analyzer_statefulset_test_go
+    mod_pkg_analyzer_statefulset_test_go : TestStatefulSetAnalyzerUnavailableReplicaWithPodInitialized(t:T) : }
+    mod_pkg_analyzer_statefulset_test_go : TestStatefulSetAnalyzerUnavailableReplicas(t:T) : }
+    mod_pkg_analyzer_statefulset_test_go : TestStatefulSetAnalyzerReplica(t:T) : }
+    mod_pkg_analyzer_statefulset_test_go : TestStatefulSetAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_statefulset_test_go : TestStatefulSetAnalyzerNamespaceFiltering(t:T) : }
+    mod_pkg_analyzer_statefulset_test_go : TestStatefulSetAnalyzerMissingStorageClass(t:T) : }
+    mod_pkg_analyzer_statefulset_test_go : TestStatefulSetAnalyzerWithoutService(t:T) : }
+    mod_pkg_analyzer_statefulset_test_go : TestStatefulSetAnalyzer(t:T) : }
+}
+package "pkg/analyzer/storage.go" as file_pkg_analyzer_storage_go {
+  class "pkg/analyzer/storage.go" as mod_pkg_analyzer_storage_go
+    mod_pkg_analyzer_storage_go : analyzePersistentVolumeClaims(a:r) : u, rror
+    mod_pkg_analyzer_storage_go : analyzePersistentVolumes(a:r) : u, rror
+    mod_pkg_analyzer_storage_go : analyzeStorageClasses(a:r) : u, rror
+    mod_pkg_analyzer_storage_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/storage_test.go" as file_pkg_analyzer_storage_test_go {
+  class "pkg/analyzer/storage_test.go" as mod_pkg_analyzer_storage_test_go
+    mod_pkg_analyzer_storage_test_go : TestStorageAnalyzer(t:T) : }
+}
+package "pkg/analyzer/subscription.go" as file_pkg_analyzer_subscription_go {
+  class "pkg/analyzer/subscription.go" as mod_pkg_analyzer_subscription_go
+    mod_pkg_analyzer_subscription_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/subscription_test.go" as file_pkg_analyzer_subscription_test_go {
+  class "pkg/analyzer/subscription_test.go" as mod_pkg_analyzer_subscription_test_go
+    mod_pkg_analyzer_subscription_test_go : TestSubscriptionAnalyzer(t:T) : }
+}
+package "pkg/analyzer/test_utils.go" as file_pkg_analyzer_test_utils_go {
+  class "pkg/analyzer/test_utils.go" as mod_pkg_analyzer_test_utils_go
+    mod_pkg_analyzer_test_utils_go : int64Ptr(i:64) : 64
+    mod_pkg_analyzer_test_utils_go : boolPtr(b:oo) : oo
+    note right of mod_pkg_analyzer_test_utils_go::boolPtr(b:oo)
+      // Helper functions for tests
+    end note
+}
+package "pkg/analyzer/validating_webhook.go" as file_pkg_analyzer_validating_webhook_go {
+  class "pkg/analyzer/validating_webhook.go" as mod_pkg_analyzer_validating_webhook_go
+    mod_pkg_analyzer_validating_webhook_go : (r) Analyze(a:r) : z
+}
+package "pkg/analyzer/validating_webhook_test.go" as file_pkg_analyzer_validating_webhook_test_go {
+  class "pkg/analyzer/validating_webhook_test.go" as mod_pkg_analyzer_validating_webhook_test_go
+    mod_pkg_analyzer_validating_webhook_test_go : TestValidatingWebhookAnalyzerLabelSelectorFiltering(t:T) : }
+    mod_pkg_analyzer_validating_webhook_test_go : TestValidatingWebhookAnalyzer(t:T) : }
+}
+package "pkg/cache/azuresa_based.go" as file_pkg_cache_azuresa_based_go {
+  class "pkg/cache/azuresa_based.go" as mod_pkg_cache_azuresa_based_go
+    mod_pkg_cache_azuresa_based_go : (c) DisableCache() : c
+    mod_pkg_cache_azuresa_based_go : (c) GetName() : N
+    mod_pkg_cache_azuresa_based_go : (c) IsCacheDisabled() : D
+    mod_pkg_cache_azuresa_based_go : (c) Exists(key:r) : E
+    mod_pkg_cache_azuresa_based_go : (c) Remove(key:r) : ov
+    mod_pkg_cache_azuresa_based_go : (c) List() : L
+    mod_pkg_cache_azuresa_based_go : (c) Load(key:r) : Lo
+    mod_pkg_cache_azuresa_based_go : (c) Store(key:r, data:r) : or
+    mod_pkg_cache_azuresa_based_go : (c) Configure(cacheInfo:r) : ur
+}
+package "pkg/cache/cache.go" as file_pkg_cache_cache_go {
+  class "pkg/cache/cache.go" as mod_pkg_cache_cache_go
+    mod_pkg_cache_cache_go : RemoveRemoteCache() : rror
+    mod_pkg_cache_cache_go : AddRemoteCache(cacheInfo:r) : rror
+    mod_pkg_cache_cache_go : GetCacheConfiguration() : c, rror
+    note right of mod_pkg_cache_cache_go::GetCacheConfiguration()
+      // If we have set a remote cache, return the remote cache configuration
+    end note
+    mod_pkg_cache_cache_go : NewCacheProvider(cacheType:,, bucketname:,, region:,, endpoint:,, storageAccount:,, containerName:,, projectId:,, insecure:oo) : r, rror
+    mod_pkg_cache_cache_go : ParseCacheConfiguration() : r, rror
+    mod_pkg_cache_cache_go : New(cacheType:r) : c
+}
+package "pkg/cache/file_based.go" as file_pkg_cache_file_based_go {
+  class "pkg/cache/file_based.go" as mod_pkg_cache_file_based_go
+    mod_pkg_cache_file_based_go : (c) DisableCache() : c
+    mod_pkg_cache_file_based_go : (c) GetName() : N
+    mod_pkg_cache_file_based_go : (c) Store(key:r, data:r) : or
+    mod_pkg_cache_file_based_go : (c) Remove(key:r) : ov
+    mod_pkg_cache_file_based_go : (c) Load(key:r) : Lo
+    mod_pkg_cache_file_based_go : (c) Exists(key:r) : E
+    mod_pkg_cache_file_based_go : (c) List() : L
+    mod_pkg_cache_file_based_go : (c) IsCacheDisabled() : D
+    mod_pkg_cache_file_based_go : (c) Configure(cacheInfo:r) : ur
+}
+package "pkg/cache/gcs_based.go" as file_pkg_cache_gcs_based_go {
+  class "pkg/cache/gcs_based.go" as mod_pkg_cache_gcs_based_go
+    mod_pkg_cache_gcs_based_go : (c) DisableCache() : c
+    mod_pkg_cache_gcs_based_go : (c) GetName() : N
+    mod_pkg_cache_gcs_based_go : (c) IsCacheDisabled() : D
+    mod_pkg_cache_gcs_based_go : (c) Exists(key:r) : E
+    mod_pkg_cache_gcs_based_go : (c) List() : L
+    mod_pkg_cache_gcs_based_go : (c) Remove(key:r) : ov
+    mod_pkg_cache_gcs_based_go : (c) Load(key:r) : Lo
+    mod_pkg_cache_gcs_based_go : (c) Store(key:r, data:r) : or
+    mod_pkg_cache_gcs_based_go : (c) Configure(cacheInfo:r) : ur
+}
+package "pkg/cache/interplex_based.go" as file_pkg_cache_interplex_based_go {
+  class "pkg/cache/interplex_based.go" as mod_pkg_cache_interplex_based_go
+    mod_pkg_cache_interplex_based_go : (c) DisableCache() : c
+    mod_pkg_cache_interplex_based_go : (c) GetName() : N
+    mod_pkg_cache_interplex_based_go : (c) IsCacheDisabled() : D
+    mod_pkg_cache_interplex_based_go : (c) Exists(key:r) : E
+    mod_pkg_cache_interplex_based_go : (c) Remove(key:r) : ov
+    mod_pkg_cache_interplex_based_go : (c) List() : L
+    mod_pkg_cache_interplex_based_go : (c) Load(key:r) : Lo
+    mod_pkg_cache_interplex_based_go : (c) Store(key:r, data:r) : or
+    mod_pkg_cache_interplex_based_go : (c) Configure(cacheInfo:r) : ur
+}
+package "pkg/cache/interplex_based_test.go" as file_pkg_cache_interplex_based_test_go {
+  class "pkg/cache/interplex_based_test.go" as mod_pkg_cache_interplex_based_test_go
+    mod_pkg_cache_interplex_based_test_go : TestInterplexCache(t:T) : }
+    mod_pkg_cache_interplex_based_test_go : (c) Get(ctx:Co, req:qu) : G
+    mod_pkg_cache_interplex_based_test_go : (c) Set(ctx:Co, req:qu) : S
+}
+package "pkg/cache/s3_based.go" as file_pkg_cache_s3_based_go {
+  class "pkg/cache/s3_based.go" as mod_pkg_cache_s3_based_go
+    mod_pkg_cache_s3_based_go : (c) DisableCache() : c
+    mod_pkg_cache_s3_based_go : (c) GetName() : N
+    mod_pkg_cache_s3_based_go : (c) IsCacheDisabled() : D
+    mod_pkg_cache_s3_based_go : (c) Exists(key:r) : E
+    mod_pkg_cache_s3_based_go : (c) List() : L
+    mod_pkg_cache_s3_based_go : (c) Load(key:r) : Lo
+    mod_pkg_cache_s3_based_go : (c) Remove(key:r) : ov
+    mod_pkg_cache_s3_based_go : (c) Store(key:r, data:r) : or
+    mod_pkg_cache_s3_based_go : (c) Configure(cacheInfo:r) : ur
+}
+package "pkg/cache/types.go" as file_pkg_cache_types_go {
+  class "pkg/cache/types.go" as mod_pkg_cache_types_go
+}
+package "pkg/common/types.go" as file_pkg_common_types_go {
+  class "pkg/common/types.go" as mod_pkg_common_types_go
+}
+package "pkg/custom/client.go" as file_pkg_custom_client_go {
+  class "pkg/custom/client.go" as mod_pkg_custom_client_go
+    mod_pkg_custom_client_go : NewClient(c:o) : C, rror
+    mod_pkg_custom_client_go : (C) Run() : Ru
+}
+package "pkg/custom/types.go" as file_pkg_custom_types_go {
+  class "pkg/custom/types.go" as mod_pkg_custom_types_go
+}
+package "pkg/custom_analyzer/customAnalyzer.go" as file_pkg_custom_analyzer_customAnalyzer_go {
+  class "pkg/custom_analyzer/customAnalyzer.go" as mod_pkg_custom_analyzer_customAnalyzer_go
+    mod_pkg_custom_analyzer_customAnalyzer_go : NewCustomAnalyzer() : r
+    mod_pkg_custom_analyzer_customAnalyzer_go : (r) Check(actualConfig:o, name:,, url:,, port:int) : ck
+}
+package "pkg/integration/aws/aws.go" as file_pkg_integration_aws_aws_go {
+  class "pkg/integration/aws/aws.go" as mod_pkg_integration_aws_aws_go
+    mod_pkg_integration_aws_aws_go : NewAWS() : AWS
+    mod_pkg_integration_aws_aws_go : (AWS) IsActivate() : v
+    mod_pkg_integration_aws_aws_go : (AWS) isFilterActive() : v
+    mod_pkg_integration_aws_aws_go : (AWS) OwnsAnalyzer(s:r) : r
+    mod_pkg_integration_aws_aws_go : (AWS) GetNamespace() : c
+    mod_pkg_integration_aws_aws_go : (AWS) GetAnalyzerName() : rN
+    mod_pkg_integration_aws_aws_go : (AWS) AddAnalyzer(mergedMap:r) : r
+    mod_pkg_integration_aws_aws_go : (AWS) UnDeploy(namespace:r) : o
+    mod_pkg_integration_aws_aws_go : (AWS) Deploy(namespace:r) : o
+}
+package "pkg/integration/aws/eks.go" as file_pkg_integration_aws_eks_go {
+  class "pkg/integration/aws/eks.go" as mod_pkg_integration_aws_eks_go
+    mod_pkg_integration_aws_eks_go : (r) Analyze(analysis:r) : z
+}
+package "pkg/integration/integration.go" as file_pkg_integration_integration_go {
+  class "pkg/integration/integration.go" as mod_pkg_integration_integration_go
+    mod_pkg_integration_integration_go : NewIntegration() : o
+    mod_pkg_integration_integration_go : (o) IsActivate(name:r) : v
+    mod_pkg_integration_integration_go : (o) Deactivate(name:r, namespace:r) : v
+    mod_pkg_integration_integration_go : (o) Activate(name:r, namespace:r, activeFilters:r, skipInstall:oo) : v
+    mod_pkg_integration_integration_go : (o) AnalyzerByIntegration(input:r) : o
+    mod_pkg_integration_integration_go : (o) Get(name:r) : G
+    mod_pkg_integration_integration_go : (o) List() : L
+}
+package "pkg/integration/integration_test.go" as file_pkg_integration_integration_test_go {
+  class "pkg/integration/integration_test.go" as mod_pkg_integration_integration_test_go
+    mod_pkg_integration_integration_test_go : TestActivate(t:T) : }
+    mod_pkg_integration_integration_test_go : TestAnalyzerByIntegration(t:T) : }
+}
+package "pkg/integration/keda/keda.go" as file_pkg_integration_keda_keda_go {
+  class "pkg/integration/keda/keda.go" as mod_pkg_integration_keda_keda_go
+    mod_pkg_integration_keda_keda_go : NewKeda() : K
+    mod_pkg_integration_keda_keda_go : getEnv(key:,, defaultValue:,) : r
+    mod_pkg_integration_keda_keda_go : (K) IsActivate() : v
+    mod_pkg_integration_keda_keda_go : (K) isDeployed() : o
+    mod_pkg_integration_keda_keda_go : (K) isFilterActive() : v
+    mod_pkg_integration_keda_keda_go : (K) OwnsAnalyzer(analyzer:r) : r
+    mod_pkg_integration_keda_keda_go : (K) GetNamespace() : c
+    mod_pkg_integration_keda_keda_go : (K) GetAnalyzerName() : rN
+    mod_pkg_integration_keda_keda_go : (K) AddAnalyzer(mergedMap:r) : r
+    mod_pkg_integration_keda_keda_go : (K) UnDeploy(namespace:r) : o
+    mod_pkg_integration_keda_keda_go : (K) Deploy(namespace:r) : o
+}
+package "pkg/integration/keda/scaledobject_analyzer.go" as file_pkg_integration_keda_scaledobject_analyzer_go {
+  class "pkg/integration/keda/scaledobject_analyzer.go" as mod_pkg_integration_keda_scaledobject_analyzer_go
+    mod_pkg_integration_keda_scaledobject_analyzer_go : (fo) GetPodSpec() : c
+
+    mod_pkg_integration_keda_scaledobject_analyzer_go : (fo) GetPodSpec() : c
+    mod_pkg_integration_keda_scaledobject_analyzer_go : (fo) GetPodSpec() : c
+    mod_pkg_integration_keda_scaledobject_analyzer_go : (fo) GetPodSpec() : c
+    mod_pkg_integration_keda_scaledobject_analyzer_go : (r) Analyze(a:r) : z
+}
+package "pkg/integration/kyverno/analyzer.go" as file_pkg_integration_kyverno_analyzer_go {
+  class "pkg/integration/kyverno/analyzer.go" as mod_pkg_integration_kyverno_analyzer_go
+    mod_pkg_integration_kyverno_analyzer_go : (r) Analyze(a:r) : z
+    mod_pkg_integration_kyverno_analyzer_go : (r) analyzeClusterPolicyReports(a:r) : or
+    mod_pkg_integration_kyverno_analyzer_go : (r) analyzePolicyReports(a:r) : or
+}
+package "pkg/integration/kyverno/analyzer_test.go" as file_pkg_integration_kyverno_analyzer_test_go {
+  class "pkg/integration/kyverno/analyzer_test.go" as mod_pkg_integration_kyverno_analyzer_test_go
+    mod_pkg_integration_kyverno_analyzer_test_go : TestAnalyzerAllNamespace(t:T) : }
+    mod_pkg_integration_kyverno_analyzer_test_go : TestAnalyzerNamespaceFiltering(t:T) : }
+    mod_pkg_integration_kyverno_analyzer_test_go : buildFakeClient(t:T) : C
+}
+package "pkg/integration/kyverno/kyverno.go" as file_pkg_integration_kyverno_kyverno_go {
+  class "pkg/integration/kyverno/kyverno.go" as mod_pkg_integration_kyverno_kyverno_go
+    mod_pkg_integration_kyverno_kyverno_go : NewKyverno() : o
+    mod_pkg_integration_kyverno_kyverno_go : (o) GetNamespace() : c
+    mod_pkg_integration_kyverno_kyverno_go : (o) UnDeploy(_:r) : o
+    mod_pkg_integration_kyverno_kyverno_go : (o) Deploy(namespace:r) : o
+    mod_pkg_integration_kyverno_kyverno_go : (o) AddAnalyzer(mergedMap:r) : r
+    mod_pkg_integration_kyverno_kyverno_go : (o) IsActivate() : v
+    mod_pkg_integration_kyverno_kyverno_go : (o) isFilterActive() : v
+    mod_pkg_integration_kyverno_kyverno_go : (o) isDeployed() : o
+    mod_pkg_integration_kyverno_kyverno_go : (o) OwnsAnalyzer(analyzer:r) : r
+    mod_pkg_integration_kyverno_kyverno_go : (o) GetAnalyzerName() : rN
+}
+package "pkg/integration/prometheus/config_analyzer.go" as file_pkg_integration_prometheus_config_analyzer_go {
+  class "pkg/integration/prometheus/config_analyzer.go" as mod_pkg_integration_prometheus_config_analyzer_go
+    mod_pkg_integration_prometheus_config_analyzer_go : unmarshalPromConfigBytes(b:[]) : f, rror
+    mod_pkg_integration_prometheus_config_analyzer_go : extractPrometheusConfigFromVolume(ctx:Co, client:c, volume:u, namespace:,, key:,) : [], rror
+    mod_pkg_integration_prometheus_config_analyzer_go : findPrometheusConfigVolumeAndKey(ctx:Co, client:c, pod:Po) : u, r, rror
+    mod_pkg_integration_prometheus_config_analyzer_go : findPrometheusConfigPath(ctx:Co, client:c, pod:Po) : r, rror
+    mod_pkg_integration_prometheus_config_analyzer_go : findPrometheusPods(ctx:Co, client:c, namespace:r) : Po, rror
+    mod_pkg_integration_prometheus_config_analyzer_go : findPrometheusPodConfigs(ctx:Co, client:c, namespace:r) : f, rror
+    mod_pkg_integration_prometheus_config_analyzer_go : configKey(namespace:r, volume:u) : r, rror
+    mod_pkg_integration_prometheus_config_analyzer_go : (r) Analyze(a:r) : z
+}
+package "pkg/integration/prometheus/prometheus.go" as file_pkg_integration_prometheus_prometheus_go {
+  class "pkg/integration/prometheus/prometheus.go" as mod_pkg_integration_prometheus_prometheus_go
+    mod_pkg_integration_prometheus_prometheus_go : NewPrometheus() : u
+    mod_pkg_integration_prometheus_prometheus_go : (u) IsActivate() : v
+    mod_pkg_integration_prometheus_prometheus_go : (u) OwnsAnalyzer(analyzer:r) : r
+    mod_pkg_integration_prometheus_prometheus_go : (u) GetNamespace() : c
+    mod_pkg_integration_prometheus_prometheus_go : (u) GetAnalyzerName() : rN
+    mod_pkg_integration_prometheus_prometheus_go : (u) AddAnalyzer(mergedMap:r) : r
+    mod_pkg_integration_prometheus_prometheus_go : (u) UnDeploy(_:r) : o
+    mod_pkg_integration_prometheus_prometheus_go : (u) Deploy(namespace:r) : o
+}
+package "pkg/integration/prometheus/relabel_analyzer.go" as file_pkg_integration_prometheus_relabel_analyzer_go {
+  class "pkg/integration/prometheus/relabel_analyzer.go" as mod_pkg_integration_prometheus_relabel_analyzer_go
+    mod_pkg_integration_prometheus_relabel_analyzer_go : (r) Analyze(a:r) : z
+}
+package "pkg/kubernetes/apireference.go" as file_pkg_kubernetes_apireference_go {
+  class "pkg/kubernetes/apireference.go" as mod_pkg_kubernetes_apireference_go
+    mod_pkg_kubernetes_apireference_go : (c) recursePath(definitions:Sc, leaf:r, paths:r) : P
+    mod_pkg_kubernetes_apireference_go : (c) GetApiDocV2(field:r) : DocV2
+}
+package "pkg/kubernetes/apireference_test.go" as file_pkg_kubernetes_apireference_test_go {
+  class "pkg/kubernetes/apireference_test.go" as mod_pkg_kubernetes_apireference_test_go
+    mod_pkg_kubernetes_apireference_test_go : TestGetApiDocV2(t:T) : }
+}
+package "pkg/kubernetes/kubernetes.go" as file_pkg_kubernetes_kubernetes_go {
+  class "pkg/kubernetes/kubernetes.go" as mod_pkg_kubernetes_kubernetes_go
+    mod_pkg_kubernetes_kubernetes_go : NewClient(kubecontext:r, kubeconfig:r) : C, rror
+    mod_pkg_kubernetes_kubernetes_go : (C) GetDynamicClient() : cC
+    mod_pkg_kubernetes_kubernetes_go : (C) GetCtrlClient() : C
+    mod_pkg_kubernetes_kubernetes_go : (C) GetClient() : C
+    mod_pkg_kubernetes_kubernetes_go : (C) GetConfig() : f
+}
+package "pkg/kubernetes/types.go" as file_pkg_kubernetes_types_go {
+  class "pkg/kubernetes/types.go" as mod_pkg_kubernetes_types_go
+}
+package "pkg/server/analyze/analyze.go" as file_pkg_server_analyze_analyze_go {
+  class "pkg/server/analyze/analyze.go" as mod_pkg_server_analyze_analyze_go
+    mod_pkg_server_analyze_analyze_go : (r) Analyze(ctx:Co, i:qu) : z
+}
+package "pkg/server/analyze/handler.go" as file_pkg_server_analyze_handler_go {
+  class "pkg/server/analyze/handler.go" as mod_pkg_server_analyze_handler_go
+}
+package "pkg/server/client_example/main.go" as file_pkg_server_client_example_main_go {
+  class "pkg/server/client_example/main.go" as mod_pkg_server_client_example_main_go
+    mod_pkg_server_client_example_main_go : main() : }
+}
+package "pkg/server/config/config.go" as file_pkg_server_config_config_go {
+  class "pkg/server/config/config.go" as mod_pkg_server_config_config_go
+    mod_pkg_server_config_config_go : (r) RemoveConfig(ctx:Co, i:qu) : f
+    mod_pkg_server_config_config_go : (r) AddConfig(ctx:Co, i:qu) : f
+    mod_pkg_server_config_config_go : (r) ApplyConfig(ctx:Co, i:qu) : f
+
+}
+package "pkg/server/config/handler.go" as file_pkg_server_config_handler_go {
+  class "pkg/server/config/handler.go" as mod_pkg_server_config_handler_go
+    mod_pkg_server_config_handler_go : (r) Shutdown(ctx:Co, request:qu) : ow
+}
+package "pkg/server/config/integration.go" as file_pkg_server_config_integration_go {
+  class "pkg/server/config/integration.go" as mod_pkg_server_config_integration_go
+    mod_pkg_server_config_integration_go : (r) deactivateAllIntegrations(integrationProvider:o) : o
+    mod_pkg_server_config_integration_go : (r) ListIntegrations(ctx:Co, req:qu) : o
+    mod_pkg_server_config_integration_go : (r) syncIntegration(ctx:Co, i:qu) : o
+
+}
+package "pkg/server/example/main.go" as file_pkg_server_example_main_go {
+  class "pkg/server/example/main.go" as mod_pkg_server_example_main_go
+    mod_pkg_server_example_main_go : main() : }
+}
+package "pkg/server/log.go" as file_pkg_server_log_go {
+  class "pkg/server/log.go" as mod_pkg_server_log_go
+    mod_pkg_server_log_go : logRequest(logger:r, fields:F, statusCode:int, message:r) : }
+    mod_pkg_server_log_go : LogInterceptor(logger:r) : or
+}
+package "pkg/server/mcp.go" as file_pkg_server_mcp_go {
+  class "pkg/server/mcp.go" as mod_pkg_server_mcp_go
+    mod_pkg_server_mcp_go : stripANSI(input:r) : r
+    note right of mod_pkg_server_mcp_go::stripANSI(input:r)
+      // stripANSI removes ANSI escape sequences from a string
+    end note
+    mod_pkg_server_mcp_go : validateMaxConcurrency(maxConcurrency:int) : int
+    note right of mod_pkg_server_mcp_go::validateMaxConcurrency(maxConcurrency:int)
+      // validateMaxConcurrency validates and bounds the MaxConcurrency parameter
+    end note
+    mod_pkg_server_mcp_go : NewMCPServer(port:r, aiProvider:r, useHTTP:oo, logger:r) : r, rror
+    mod_pkg_server_mcp_go : (r) Errorf(format:r, v:...) : Errorf
+    mod_pkg_server_mcp_go : (r) Infof(format:r, v:...) : fof
+    mod_pkg_server_mcp_go : (r) Close() : o
+
+    mod_pkg_server_mcp_go : (r) getClusterInfo(ctx:Co, request:qu) : fo
+    mod_pkg_server_mcp_go : (r) registerResources() : ourc
+
+    mod_pkg_server_mcp_go : (r) registerPrompts() : rPro
+
+    mod_pkg_server_mcp_go : (r) handleConfig(ctx:Co, request:qu) : f
+
+    mod_pkg_server_mcp_go : (r) handleClusterInfo(ctx:Co, request:qu) : fo
+
+    mod_pkg_server_mcp_go : (r) handleAnalyze(ctx:Co, request:qu) : z
+
+    mod_pkg_server_mcp_go : (r) registerToolsAndResources() : ourc
+    mod_pkg_server_mcp_go : (r) Start() : r
+
+}
+package "pkg/server/query/handler.go" as file_pkg_server_query_handler_go {
+  class "pkg/server/query/handler.go" as mod_pkg_server_query_handler_go
+}
+package "pkg/server/query/query.go" as file_pkg_server_query_query_go {
+  class "pkg/server/query/query.go" as mod_pkg_server_query_query_go
+    mod_pkg_server_query_query_go : (r) Query(ctx:Co, i:qu) : r
+}
+package "pkg/server/query/query_test.go" as file_pkg_server_query_query_test_go {
+  class "pkg/server/query/query_test.go" as mod_pkg_server_query_query_test_go
+    mod_pkg_server_query_query_test_go : TestQuery_GetCompletionError(t:T) : }
+    mod_pkg_server_query_query_test_go : TestQuery_ConfigureError(t:T) : }
+    mod_pkg_server_query_query_test_go : TestQuery_ProviderNotFound(t:T) : }
+    mod_pkg_server_query_query_test_go : TestQuery_UnmarshalError(t:T) : }
+    mod_pkg_server_query_query_test_go : TestQuery_Success(t:T) : }
+    mod_pkg_server_query_query_test_go : (r) UnmarshalKey(key:r, rawVal:{}) : K
+    mod_pkg_server_query_query_test_go : (or) NewClient(provider:r) : wC
+    mod_pkg_server_query_query_test_go : (MockAI) Close() : o
+    mod_pkg_server_query_query_test_go : (MockAI) GetName() : N
+    mod_pkg_server_query_query_test_go : (MockAI) GetCompletion(ctx:Co, prompt:r) : o
+    mod_pkg_server_query_query_test_go : (MockAI) Configure(config:f) : ur
+}
+package "pkg/server/server.go" as file_pkg_server_server_go {
+  class "pkg/server/server.go" as mod_pkg_server_server_go
+    mod_pkg_server_server_go : grpcHandlerFunc(grpcServer:r, otherHandler:r) : r
+
+    mod_pkg_server_server_go : (f) ServeMetrics() : c
+    mod_pkg_server_server_go : (f) Serve() : rv
+    mod_pkg_server_server_go : (f) Shutdown() : ow
+}
+package "pkg/server/server_test.go" as file_pkg_server_server_test_go {
+  class "pkg/server/server_test.go" as mod_pkg_server_server_test_go
+    mod_pkg_server_server_test_go : waitForPort(address:r, timeout:o) : rror
+    mod_pkg_server_server_test_go : TestMCPServerToolCall(t:T) : }
+    note right of mod_pkg_server_server_test_go::TestMCPServerToolCall(t:T)
+      // TestMCPServerToolCall tests calling a specific tool (analyze) through the MCP server
+    end note
+    mod_pkg_server_server_test_go : TestMCPServerBasicHTTP(t:T) : }
+    note right of mod_pkg_server_server_test_go::TestMCPServerBasicHTTP(t:T)
+      // TestMCPServerBasicHTTP tests basic HTTP connectivity to the MCP server
+    end note
+    mod_pkg_server_server_test_go : TestMCPServerCreation(t:T) : }
+    note right of mod_pkg_server_server_test_go::TestMCPServerCreation(t:T)
+      // TestMCPServerCreation tests the creation of an MCP server
+    end note
+    mod_pkg_server_server_test_go : TestServe(t:T) : }
+}
+package "pkg/util/util.go" as file_pkg_util_util_go {
+  class "pkg/util/util.go" as mod_pkg_util_util_go
+    mod_pkg_util_util_go : Contains(s:,, substr:,) : oo
+
+    mod_pkg_util_util_go : CaptureOutput(f:c()) : r
+    note right of mod_pkg_util_util_go::CaptureOutput(f:c())
+      // CaptureOutput captures the output of a function that writes to stdout
+    end note
+    mod_pkg_util_util_go : LabelStrToSelector(labelStr:r) : or
+    mod_pkg_util_util_go : NewHeaders(customHeaders:r) : r
+    note right of mod_pkg_util_util_go::NewHeaders(customHeaders:r)
+      // It handles headers with the same key by appending values
+    end note
+    mod_pkg_util_util_go : FetchLatestEvent(ctx:Co, kubernetesClient:C, namespace:r, name:r) : Ev, rror
+    mod_pkg_util_util_go : LabelsIncludeAny(predefinedSelector:,, Labels:,) : oo
+    mod_pkg_util_util_go : MapToString(m:r) : r
+    mod_pkg_util_util_go : EnsureDirExists(dir:r) : rror
+    mod_pkg_util_util_go : FileExists(path:r) : oo, rror
+    mod_pkg_util_util_go : GetPodListByLabels(client:c, namespace:r, labels:r) : L, rror
+    mod_pkg_util_util_go : GetCacheKey(provider:r, language:r, sEnc:r) : r
+    mod_pkg_util_util_go : ReplaceIfMatch(text:r, pattern:r, replacement:r) : r
+    mod_pkg_util_util_go : MaskString(input:r) : r
+    mod_pkg_util_util_go : SliceDiff(source:,, dest:,) : r
+    mod_pkg_util_util_go : RemoveDuplicates(slice:r) : r, r
+    mod_pkg_util_util_go : GetParent(client:C, meta:M) : r, oo
+}
+package "pkg/util/util_test.go" as file_pkg_util_util_test_go {
+  class "pkg/util/util_test.go" as mod_pkg_util_util_test_go
+    mod_pkg_util_util_test_go : TestLabelsIncludeAny(t:T) : }
+    mod_pkg_util_util_test_go : TestMapToString(t:T) : }
+    mod_pkg_util_util_test_go : TestEnsureDirExists(t:T) : }
+    mod_pkg_util_util_test_go : TestFileExists(t:T) : }
+    mod_pkg_util_util_test_go : TestGetPodListByLabels(t:T) : }
+    mod_pkg_util_util_test_go : TestGetCacheKey(t:T) : }
+    mod_pkg_util_util_test_go : TestReplaceIfMatch(t:T) : }
+    mod_pkg_util_util_test_go : TestSliceDiff(t:T) : }
+    mod_pkg_util_util_test_go : TestRemoveDuplicates(t:T) : }
+    mod_pkg_util_util_test_go : TestGetParent(t:T) : }
+}
+@enduml

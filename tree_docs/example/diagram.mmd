@@ -1,0 +1,815 @@
+classDiagram
+  class DumpOut
+  class K8sGPTInfo
+  class custom_analyzer_CustomAnalyzer
+  class custom_analyzer_Connection
+  class CustomAnalyzerConfiguration
+  class JsonOutput
+  class AnalysisErrors
+  class AnalysisStatus
+  class Analysis
+  class CacheObjectDetails
+  class CacheProvider
+  class ICache 
+  class mockCacheService
+  class FileBasedCache
+  class InterplexClient
+  class InterplexCacheConfiguration
+  class InterplexCache
+  class AzureCacheConfiguration
+  class AzureCache
+  class S3CacheConfiguration
+  class S3Cache
+  class GCSCacheConfiguration
+  class GCSCache
+  class Integration
+  class IIntegration 
+  class keda_StatefulSetInfo
+  class keda_ReplicaSetInfo
+  class keda_ReplicationControllerInfo
+  class keda_DeploymentInfo
+  class keda_PodInfo 
+  class ScaledObjectAnalyzer
+  class Keda
+  class EKSAnalyzer
+  class AWS
+  class podConfig
+  class ConfigAnalyzer
+  class Prometheus
+  class RelabelAnalyzer
+  class KyvernoAnalyzer
+  class Kyverno
+  class Health
+  class Config
+  class zapLoggerAdapter
+  class ConfigResponse
+  class ConfigRequest
+  class ClusterInfoResponse
+  class ClusterInfoRequest
+  class AnalyzeResponse
+  class server_AnalyzeRequest
+  class K8sGptMCPServer
+  class config_Handler
+  class analyze_Handler
+  class JSONRPCResponse
+  class main_AnalyzeRequest
+  class query_Handler
+  class MockConfigProvider
+  class MockAIClientFactory
+  class MockAI
+  class BundleMetadata
+  class ClusterExtensionInstallStatus
+  class ClusterExtensionStatus
+  class CatalogFilter
+  class SourceConfig
+  class ServiceAccountReference
+  class CRDUpgradeSafetyPreflightConfig
+  class PreflightConfig
+  class ClusterExtensionInstallConfig
+  class ClusterExtensionSpec
+  class ClusterExtension
+  class ImageSource
+  class ResolvedImageSource
+  class ResolvedCatalogSource
+  class CatalogSource
+  class ClusterCatalogURLs
+  class ClusterCatalogStatus
+  class ClusterCatalogSpec
+  class ClusterCatalogList
+  class ClusterCatalog
+  class CRDUpgradeSafetyEnforcement
+  class UpgradeConstraintPolicy
+  class AvailabilityMode
+  class SourceType
+  class Sensitive
+  class Failure
+  class AnalysisStats
+  class common_Result
+  class PreAnalysis
+  class Analyzer
+  class IAnalyzer 
+  class IBMWatsonxAIClient
+  class AzureAIClient
+  class AIProvider
+  class AIConfiguration
+  class IAIConfig 
+  class nopCloser
+  class IAI 
+  class ViperConfigProvider
+  class ConfigProvider 
+  class DefaultAIClientFactory
+  class AIClientFactory 
+  class mockConfig
+  class LocalAIClient
+  class CustomRestResponse
+  class CustomRestRequest
+  class CustomRestClient
+  class GoogleGenAIClient
+  class MockBedrockRuntimeClient
+  class MockBedrockClient
+  class HuggingfaceClient
+  class OpenAIHeaderTransport
+  class OpenAIClient
+  class BedrockRuntimeAPI 
+  class BedrockManagementAPI 
+  class AmazonBedRockClient
+  class Parameters
+  class ai_Message
+  class Request
+  class Generations
+  class SageMakerAIClient
+  class OCIGenAIClient
+  class ociModelVendor
+  class GoogleVertexAIClient
+  class OllamaClient
+  class CohereClient
+  class NoOpAIClient
+  class MockResponse
+  class MockCompletion
+  class AmazonNovaResponse
+  class UsageDetails
+  class bedrock_support_Message
+  class Content
+  class bedrock_support_InvokeModelResponseBody
+  class bedrock_support_Result
+  class NResponse 
+  class NovaResponse
+  class AmazonResponse
+  class Completion
+  class Data
+  class AI21Response
+  class CohereResponse
+  class CohereMessagesResponse
+  class IResponse 
+  class AmazonCompletion
+  class AI21
+  class CohereMessagesCompletion
+  class CohereCompletion
+  class ICompletion 
+  class BedrockModel
+  class BedrockModelConfig
+  class InteractionRunner
+  class INTERACTIVE_STATE
+  class K8sApiReference
+  class kubernetes_Client
+  class custom_CustomAnalyzer
+  class custom_Connection
+  class custom_Client
+  class LogAnalyzer
+  class DeploymentAnalyzer
+  class SubscriptionAnalyzer
+  class GatewayAnalyzer
+  class ServiceAnalyzer
+  class ClusterServiceVersionAnalyzer
+  class StatefulSetAnalyzer
+  class PdbAnalyzer
+  class PvcAnalyzer
+  class PodAnalyzer
+  class SecurityAnalyzer
+  class MutatingWebhookAnalyzer
+  class NetworkPolicyAnalyzer
+  class JobAnalyzer
+  class IngressAnalyzer
+  class InstallPlanAnalyzer
+  class OperatorGroupAnalyzer
+  class ReplicaSetAnalyzer
+  class GatewayClassAnalyzer
+  class analyzer_StatefulSetInfo
+  class analyzer_ReplicaSetInfo
+  class analyzer_ReplicationControllerInfo
+  class analyzer_DeploymentInfo
+  class analyzer_PodInfo 
+  class HpaAnalyzer
+  class StorageAnalyzer
+  class ConfigMapAnalyzer
+  class CatalogSourceAnalyzer
+  class ClusterExtensionAnalyzer
+  class ValidatingWebhookAnalyzer
+  class NodeAnalyzer
+  class CronJobAnalyzer
+  class HTTPRouteAnalyzer
+  class ClusterCatalogAnalyzer
+  class ConfigRequest__ProjectId
+  class ConfigRequest__ContainerName
+  class ConfigRequest__StorageAccount
+  class ConfigRequest__Insecure
+  class ConfigRequest__Endpoint
+  class ConfigRequest__Region
+  class ConfigRequest__BucketName
+  class ConfigRequest__Type
+  class ConfigRequest__Cache
+  class ConfigRequest__Port
+  class ConfigRequest__Url
+  class ConfigRequest__Connection
+  class JSONRPCResponse__Type
+  class JSONRPCResponse__Text
+  class JSONRPCResponse__Content
+  class JSONRPCResponse__Result
+  class AmazonNovaResponse__Message
+  class AmazonNovaResponse__Output
+  class InvokeModelResponseBody__OutputTokens
+  class InvokeModelResponseBody__InputTokens
+  class InvokeModelResponseBody__Usage
+  DumpOut : +K8sGPTInfo K8sGPTInfo
+  DumpOut : +KubenetesServerVersion *version.Info
+  DumpOut : +ActiveFilters []string
+  DumpOut : +AIConfiguration ai.AIConfiguration
+  K8sGPTInfo : +Date string
+  K8sGPTInfo : +Commit string
+  K8sGPTInfo : +Version string
+  custom_analyzer_Connection : +Port int
+  custom_analyzer_Connection : +Url string
+  CustomAnalyzerConfiguration : +Connection Connection
+  CustomAnalyzerConfiguration : +Name string
+  JsonOutput : +Results []common.Result
+  JsonOutput : +Problems int
+  JsonOutput : +Status AnalysisStatus
+  JsonOutput : +Errors AnalysisErrors
+  JsonOutput : +Provider string
+  Analysis : +Stats []common.AnalysisStats
+  Analysis : +WithStats bool
+  Analysis : +WithDoc bool
+  Analysis : +AnalysisAIProvider string
+  Analysis : +MaxConcurrency int
+  Analysis : +Explain bool
+  Analysis : +Cache cache.ICache
+  Analysis : +LabelSelector string
+  Analysis : +Namespace string
+  Analysis : +Errors []string
+  Analysis : +Results []common.Result
+  Analysis : +AIClient ai.IAI
+  Analysis : +Language string
+  Analysis : +Client *kubernetes.Client
+  Analysis : +Filters []string
+  Analysis : +Context context.Context
+  CacheObjectDetails : +UpdatedAt time.Time
+  CacheObjectDetails : +Name string
+  CacheProvider : +Interplex InterplexCacheConfiguration
+  CacheProvider : +S3 S3CacheConfiguration
+  CacheProvider : +Azure AzureCacheConfiguration
+  CacheProvider : +GCS GCSCacheConfiguration
+  CacheProvider : +CurrentCacheType string
+  mockCacheService : +data map[string]string
+  mockCacheService : +rpc.UnimplementedCacheServiceServer rpc.UnimplementedCacheServiceServer
+  FileBasedCache : +noCache bool
+  InterplexCacheConfiguration : +ConnectionString string
+  InterplexCache : +noCache bool
+  InterplexCache : +cacheServiceClient rpc.CacheServiceClient
+  InterplexCache : +client InterplexClient
+  InterplexCache : +configuration InterplexCacheConfiguration
+  AzureCacheConfiguration : +ContainerName string
+  AzureCacheConfiguration : +StorageAccount string
+  AzureCache : +session *azblob.Client
+  AzureCache : +containerName string
+  AzureCache : +noCache bool
+  AzureCache : +ctx context.Context
+  S3CacheConfiguration : +InsecureSkipVerify bool
+  S3CacheConfiguration : +Endpoint string
+  S3CacheConfiguration : +BucketName string
+  S3CacheConfiguration : +Region string
+  S3Cache : +session *s3.S3
+  S3Cache : +bucketName string
+  S3Cache : +noCache bool
+  GCSCacheConfiguration : +BucketName string
+  GCSCacheConfiguration : +Region string
+  GCSCacheConfiguration : +ProjectId string
+  GCSCache : +session *storage.Client
+  GCSCache : +region string
+  GCSCache : +projectId string
+  GCSCache : +bucketName string
+  GCSCache : +noCache bool
+  GCSCache : +ctx context.Context
+  keda_StatefulSetInfo : +appsv1.StatefulSet appsv1.StatefulSet
+  keda_ReplicaSetInfo : +appsv1.ReplicaSet appsv1.ReplicaSet
+  keda_ReplicationControllerInfo : +corev1.ReplicationController corev1.ReplicationController
+  keda_DeploymentInfo : +appsv1.Deployment appsv1.Deployment
+  Keda : +helm helmclient.Client
+  EKSAnalyzer : +session *session.Session
+  AWS : +sess *session.Session
+  AWS : IsActivate() -> IsActivate
+  AWS : isFilterActive() -> isFilterActive
+  AWS : OwnsAnalyzer() -> OwnsAnalyzer
+  AWS : GetNamespace() -> GetNamespace
+  AWS : GetAnalyzerName() -> GetAnalyzerName
+  AWS : AddAnalyzer() -> AddAnalyzer
+  AWS : UnDeploy() -> UnDeploy
+  AWS : Deploy() -> Deploy
+  podConfig : +pod *corev1.Pod
+  podConfig : +b []byte
+  KyvernoAnalyzer : +clusterReportAnalysis bool
+  KyvernoAnalyzer : +policyReportAnalysis bool
+  Health : +Failure int
+  Health : +Success int
+  Health : +Status string
+  Config : +EnableHttp bool
+  Config : +listener net.Listener
+  Config : +metricsServer *http.Server
+  Config : +Logger *zap.Logger
+  Config : +QueryHandler *query.Handler
+  Config : +AnalyzeHandler *analyze.Handler
+  Config : +ConfigHandler *config.Handler
+  Config : +Output string
+  Config : +Token string
+  Config : +Key string
+  Config : +Backend string
+  Config : +MetricsPort string
+  Config : +Port string
+  zapLoggerAdapter : +logger *zap.Logger
+  ConfigResponse : +Status string
+  ConfigRequest : +ProjectId struct{…}
+  ConfigRequest : +ContainerName struct{…}
+  ConfigRequest : +StorageAccount struct{…}
+  ConfigRequest : +Insecure struct{…}
+  ConfigRequest : +Endpoint struct{…}
+  ConfigRequest : +Region struct{…}
+  ConfigRequest : +BucketName struct{…}
+  ConfigRequest : +Type struct{…}
+  ConfigRequest : +Cache struct{…}
+  ConfigRequest : +ProjectId string
+  ConfigRequest : +ContainerName string
+  ConfigRequest : +StorageAccount string
+  ConfigRequest : +Insecure bool
+  ConfigRequest : +Endpoint string
+  ConfigRequest : +Region string
+  ConfigRequest : +BucketName string
+  ConfigRequest : +Type string
+  ConfigRequest : +Port []struct {\n		Name       string \n		Connection struct {\n			Url  string \n			Port int    \n		} \n	}
+  ConfigRequest : +Url []struct {\n		Name       string \n		Connection struct {\n			Url  string \n			Port int    \n		} \n	}
+  ConfigRequest : +Connection []struct {\n		Name       string \n		Connection struct {\n			Url  string \n			Port int    \n		} \n	}
+  ConfigRequest : +Name []struct {\n		Name       string \n		Connection struct {\n			Url  string \n			Port int    \n		} \n	}
+  ConfigRequest : +CustomAnalyzers []struct {\n		Name       string \n		Connection struct {\n			Url  string \n			Port int    \n		} \n	}
+  ConfigRequest : +Port struct{…}
+  ConfigRequest : +Url struct{…}
+  ConfigRequest : +Connection struct{…}
+  ConfigRequest : +Port int
+  ConfigRequest : +Url string
+  ConfigRequest : +Name string
+  ClusterInfoResponse : +Info string
+  AnalyzeResponse : +Results string
+  server_AnalyzeRequest : +Anonymize bool
+  server_AnalyzeRequest : +WithStats bool
+  server_AnalyzeRequest : +CustomHeaders []string
+  server_AnalyzeRequest : +InteractiveMode bool
+  server_AnalyzeRequest : +WithDoc bool
+  server_AnalyzeRequest : +MaxConcurrency int
+  server_AnalyzeRequest : +Explain bool
+  server_AnalyzeRequest : +NoCache bool
+  server_AnalyzeRequest : +LabelSelector string
+  server_AnalyzeRequest : +Filters []string
+  server_AnalyzeRequest : +Language string
+  server_AnalyzeRequest : +Backend string
+  server_AnalyzeRequest : +Namespace string
+  K8sGptMCPServer : +stdioServer *server.StdioServer
+  K8sGptMCPServer : +httpServer *server.StreamableHTTPServer
+  K8sGptMCPServer : +logger *zap.Logger
+  K8sGptMCPServer : +useHTTP bool
+  K8sGptMCPServer : +aiProvider *ai.AIProvider
+  K8sGptMCPServer : +port string
+  K8sGptMCPServer : +server *server.MCPServer
+  config_Handler : +rpc.UnimplementedServerConfigServiceServer rpc.UnimplementedServerConfigServiceServer
+  analyze_Handler : +rpc.UnimplementedServerAnalyzerServiceServer rpc.UnimplementedServerAnalyzerServiceServer
+  JSONRPCResponse : +Message *struct {\n		Code    int    \n		Message string \n	}
+  JSONRPCResponse : +Code *struct {\n		Code    int    \n		Message string \n	}
+  JSONRPCResponse : +Error *struct {\n		Code    int    \n		Message string \n	}
+  JSONRPCResponse : +Message string
+  JSONRPCResponse : +Code int
+  JSONRPCResponse : +Type struct{…}
+  JSONRPCResponse : +Text struct{…}
+  JSONRPCResponse : +Content struct{…}
+  JSONRPCResponse : +Result struct{…}
+  JSONRPCResponse : +Type []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse : +Text []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse : +Content []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse : +Type string
+  JSONRPCResponse : +Text string
+  JSONRPCResponse : +ID int
+  JSONRPCResponse : +JSONRPC string
+  main_AnalyzeRequest : +WithStats bool
+  main_AnalyzeRequest : +CustomHeaders []string
+  main_AnalyzeRequest : +InteractiveMode bool
+  main_AnalyzeRequest : +WithDoc bool
+  main_AnalyzeRequest : +MaxConcurrency int
+  main_AnalyzeRequest : +Explain bool
+  main_AnalyzeRequest : +NoCache bool
+  main_AnalyzeRequest : +LabelSelector string
+  main_AnalyzeRequest : +Filters []string
+  main_AnalyzeRequest : +Language string
+  main_AnalyzeRequest : +Backend string
+  main_AnalyzeRequest : +Namespace string
+  query_Handler : +rpc.UnimplementedServerQueryServiceServer rpc.UnimplementedServerQueryServiceServer
+  MockConfigProvider : +mock.Mock mock.Mock
+  MockAIClientFactory : +mock.Mock mock.Mock
+  MockAI : +mock.Mock mock.Mock
+  MockAI : Close() -> Close
+  MockAI : GetName() -> GetName
+  MockAI : GetCompletion() -> GetCompletion
+  MockAI : Configure() -> Configure
+  BundleMetadata : +Version string
+  BundleMetadata : +Name string
+  ClusterExtensionInstallStatus : +Bundle BundleMetadata
+  ClusterExtensionStatus : +Install *ClusterExtensionInstallStatus
+  ClusterExtensionStatus : +Conditions []metav1.Condition
+  CatalogFilter : +UpgradeConstraintPolicy UpgradeConstraintPolicy
+  CatalogFilter : +Selector *metav1.LabelSelector
+  CatalogFilter : +Channels []string
+  CatalogFilter : +Version string
+  CatalogFilter : +PackageName string
+  SourceConfig : +Catalog *CatalogFilter
+  SourceConfig : +SourceType string
+  ServiceAccountReference : +Name string
+  CRDUpgradeSafetyPreflightConfig : +Enforcement CRDUpgradeSafetyEnforcement
+  PreflightConfig : +CRDUpgradeSafety *CRDUpgradeSafetyPreflightConfig
+  ClusterExtensionInstallConfig : +Preflight *PreflightConfig
+  ClusterExtensionSpec : +Install *ClusterExtensionInstallConfig
+  ClusterExtensionSpec : +Source SourceConfig
+  ClusterExtensionSpec : +ServiceAccount ServiceAccountReference
+  ClusterExtensionSpec : +Namespace string
+  ClusterExtension : +Status ClusterExtensionStatus
+  ClusterExtension : +Spec ClusterExtensionSpec
+  ClusterExtension : +metav1.ObjectMeta metav1.ObjectMeta
+  ClusterExtension : +metav1.TypeMeta metav1.TypeMeta
+  ImageSource : +PollIntervalMinutes *int
+  ImageSource : +Ref string
+  ResolvedImageSource : +Ref string
+  ResolvedCatalogSource : +Image *ResolvedImageSource
+  ResolvedCatalogSource : +Type SourceType
+  CatalogSource : +Image *ImageSource
+  CatalogSource : +Type SourceType
+  ClusterCatalogURLs : +Base string
+  ClusterCatalogStatus : +LastUnpacked *metav1.Time
+  ClusterCatalogStatus : +URLs *ClusterCatalogURLs
+  ClusterCatalogStatus : +ResolvedSource *ResolvedCatalogSource
+  ClusterCatalogStatus : +Conditions []metav1.Condition
+  ClusterCatalogSpec : +AvailabilityMode AvailabilityMode
+  ClusterCatalogSpec : +Priority int32
+  ClusterCatalogSpec : +Source CatalogSource
+  ClusterCatalogList : +Items []ClusterCatalog
+  ClusterCatalogList : +metav1.ListMeta metav1.ListMeta
+  ClusterCatalogList : +metav1.TypeMeta metav1.TypeMeta
+  ClusterCatalog : +Status ClusterCatalogStatus
+  ClusterCatalog : +Spec ClusterCatalogSpec
+  ClusterCatalog : +metav1.ObjectMeta metav1.ObjectMeta
+  ClusterCatalog : +metav1.TypeMeta metav1.TypeMeta
+  Sensitive : +Masked string
+  Sensitive : +Unmasked string
+  Failure : +Sensitive []Sensitive
+  Failure : +KubernetesDoc string
+  Failure : +Text string
+  AnalysisStats : +DurationTime time.Duration
+  AnalysisStats : +Analyzer string
+  common_Result : +ParentObject string
+  common_Result : +Details string
+  common_Result : +Error []Failure
+  common_Result : +Name string
+  common_Result : +Kind string
+  PreAnalysis : +Extension ClusterExtension
+  PreAnalysis : +Catalog ClusterCatalog
+  PreAnalysis : +KyvernoClusterPolicyReport kyverno.ClusterPolicyReport
+  PreAnalysis : +KyvernoPolicyReport kyverno.PolicyReport
+  PreAnalysis : +ScaledObject keda.ScaledObject
+  PreAnalysis : +HTTPRoute gtwapi.HTTPRoute
+  PreAnalysis : +Gateway gtwapi.Gateway
+  PreAnalysis : +GatewayClass gtwapi.GatewayClass
+  PreAnalysis : +MutatingWebhook regv1.MutatingWebhookConfiguration
+  PreAnalysis : +ValidatingWebhook regv1.ValidatingWebhookConfiguration
+  PreAnalysis : +Node v1.Node
+  PreAnalysis : +NetworkPolicy networkv1.NetworkPolicy
+  PreAnalysis : +StatefulSet appsv1.StatefulSet
+  PreAnalysis : +PodDisruptionBudget policyv1.PodDisruptionBudget
+  PreAnalysis : +HorizontalPodAutoscalers autov2.HorizontalPodAutoscaler
+  PreAnalysis : +Ingress networkv1.Ingress
+  PreAnalysis : +Endpoint v1.Endpoints
+  PreAnalysis : +PersistentVolumeClaim v1.PersistentVolumeClaim
+  PreAnalysis : +ReplicaSet appsv1.ReplicaSet
+  PreAnalysis : +Deployment appsv1.Deployment
+  PreAnalysis : +FailureDetails []Failure
+  PreAnalysis : +Pod v1.Pod
+  Analyzer : +OpenapiSchema *openapi_v2.Document
+  Analyzer : +Results []Result
+  Analyzer : +PreAnalysis map[string]PreAnalysis
+  Analyzer : +AIClient ai.IAI
+  Analyzer : +LabelSelector string
+  Analyzer : +Namespace string
+  Analyzer : +Context context.Context
+  Analyzer : +Client *kubernetes.Client
+  IBMWatsonxAIClient : +maxNewTokens int
+  IBMWatsonxAIClient : +topK int32
+  IBMWatsonxAIClient : +topP float32
+  IBMWatsonxAIClient : +temperature float32
+  IBMWatsonxAIClient : +model string
+  IBMWatsonxAIClient : +client *wx.Client
+  IBMWatsonxAIClient : +nopCloser nopCloser
+  AzureAIClient : +temperature float32
+  AzureAIClient : +model string
+  AzureAIClient : +client *openai.Client
+  AzureAIClient : +nopCloser nopCloser
+  AIProvider : +CustomHeaders []http.Header
+  AIProvider : +OrganizationId string
+  AIProvider : +MaxTokens int
+  AIProvider : +TopK int32
+  AIProvider : +TopP float32
+  AIProvider : +CompartmentId string
+  AIProvider : +ProviderId string
+  AIProvider : +ProviderRegion string
+  AIProvider : +Temperature float32
+  AIProvider : +Engine string
+  AIProvider : +EndpointName string
+  AIProvider : +ProxyPort string
+  AIProvider : +ProxyEndpoint string
+  AIProvider : +BaseURL string
+  AIProvider : +Password string
+  AIProvider : +Model string
+  AIProvider : +Name string
+  AIConfiguration : +DefaultProvider string
+  AIConfiguration : +Providers []AIProvider
+  mockConfig : +baseURL string
+  LocalAIClient : +OpenAIClient OpenAIClient
+  CustomRestResponse : +Response string
+  CustomRestResponse : +CreatedAt time.Time
+  CustomRestResponse : +Model string
+  CustomRestRequest : +Options map[string]interface{}
+  CustomRestRequest : +Prompt string
+  CustomRestRequest : +Model string
+  CustomRestClient : +topK int32
+  CustomRestClient : +topP float32
+  CustomRestClient : +temperature float32
+  CustomRestClient : +model string
+  CustomRestClient : +token string
+  CustomRestClient : +base *url.URL
+  CustomRestClient : +client *http.Client
+  CustomRestClient : +nopCloser nopCloser
+  GoogleGenAIClient : +maxTokens int
+  GoogleGenAIClient : +topK int32
+  GoogleGenAIClient : +topP float32
+  GoogleGenAIClient : +temperature float32
+  GoogleGenAIClient : +model string
+  GoogleGenAIClient : +client *genai.Client
+  MockBedrockRuntimeClient : +mock.Mock mock.Mock
+  MockBedrockClient : +mock.Mock mock.Mock
+  HuggingfaceClient : +maxTokens int
+  HuggingfaceClient : +temperature float32
+  HuggingfaceClient : +topK int32
+  HuggingfaceClient : +topP float32
+  HuggingfaceClient : +model string
+  HuggingfaceClient : +client *huggingface.InferenceClient
+  HuggingfaceClient : +nopCloser nopCloser
+  OpenAIHeaderTransport : +Headers []http.Header
+  OpenAIHeaderTransport : +Origin http.RoundTripper
+  OpenAIClient : +topP float32
+  OpenAIClient : +temperature float32
+  OpenAIClient : +model string
+  OpenAIClient : +client *openai.Client
+  OpenAIClient : +nopCloser nopCloser
+  AmazonBedRockClient : +models []bedrock_support.BedrockModel
+  AmazonBedRockClient : +maxTokens int
+  AmazonBedRockClient : +topP float32
+  AmazonBedRockClient : +temperature float32
+  AmazonBedRockClient : +model *bedrock_support.BedrockModel
+  AmazonBedRockClient : +mgmtClient BedrockManagementAPI
+  AmazonBedRockClient : +client BedrockRuntimeAPI
+  AmazonBedRockClient : +nopCloser nopCloser
+  Parameters : +Temperature float64
+  Parameters : +TopK float64
+  Parameters : +TopP float64
+  Parameters : +MaxNewTokens int
+  ai_Message : +Content string
+  ai_Message : +Role string
+  Request : +Parameters Parameters
+  Request : +Inputs [][]Message
+  SageMakerAIClient : +maxTokens int
+  SageMakerAIClient : +topK int32
+  SageMakerAIClient : +topP float32
+  SageMakerAIClient : +endpoint string
+  SageMakerAIClient : +temperature float32
+  SageMakerAIClient : +model string
+  SageMakerAIClient : +client *sagemakerruntime.SageMakerRuntime
+  SageMakerAIClient : +nopCloser nopCloser
+  OCIGenAIClient : +maxTokens int
+  OCIGenAIClient : +topK int32
+  OCIGenAIClient : +topP float32
+  OCIGenAIClient : +temperature float32
+  OCIGenAIClient : +compartmentId string
+  OCIGenAIClient : +modelID string
+  OCIGenAIClient : +model *generativeai.Model
+  OCIGenAIClient : +client *generativeaiinference.GenerativeAiInferenceClient
+  OCIGenAIClient : +nopCloser nopCloser
+  GoogleVertexAIClient : +maxTokens int
+  GoogleVertexAIClient : +topK int32
+  GoogleVertexAIClient : +topP float32
+  GoogleVertexAIClient : +temperature float32
+  GoogleVertexAIClient : +model string
+  GoogleVertexAIClient : +client *genai.Client
+  OllamaClient : +topP float32
+  OllamaClient : +temperature float32
+  OllamaClient : +model string
+  OllamaClient : +client *ollama.Client
+  OllamaClient : +nopCloser nopCloser
+  CohereClient : +maxTokens int
+  CohereClient : +temperature float32
+  CohereClient : +model string
+  CohereClient : +client *cohere.Client
+  CohereClient : +nopCloser nopCloser
+  NoOpAIClient : +nopCloser nopCloser
+  AmazonNovaResponse : +Usage UsageDetails
+  AmazonNovaResponse : +StopReason string
+  AmazonNovaResponse : +Message struct{…}
+  AmazonNovaResponse : +Output struct{…}
+  AmazonNovaResponse : +Message Message
+  UsageDetails : +CacheWriteInputTokenCount int
+  UsageDetails : +CacheReadInputTokenCount int
+  UsageDetails : +TotalTokens int
+  UsageDetails : +OutputTokens int
+  UsageDetails : +InputTokens int
+  bedrock_support_Message : +Content []Content
+  bedrock_support_Message : +Role string
+  Content : +Text string
+  bedrock_support_InvokeModelResponseBody : +OutputTokens struct{…}
+  bedrock_support_InvokeModelResponseBody : +InputTokens struct{…}
+  bedrock_support_InvokeModelResponseBody : +Usage struct{…}
+  bedrock_support_InvokeModelResponseBody : +OutputTokens int
+  bedrock_support_InvokeModelResponseBody : +InputTokens int
+  bedrock_support_InvokeModelResponseBody : +StopSequence 
+  bedrock_support_InvokeModelResponseBody : +StopReason string
+  bedrock_support_InvokeModelResponseBody : +Text []struct {\n			Type string \n			Text string \n		}
+  bedrock_support_InvokeModelResponseBody : +Type []struct {\n			Type string \n			Text string \n		}
+  bedrock_support_InvokeModelResponseBody : +Content []struct {\n			Type string \n			Text string \n		}
+  bedrock_support_InvokeModelResponseBody : +Text string
+  bedrock_support_InvokeModelResponseBody : +Type string
+  bedrock_support_InvokeModelResponseBody : +Model string
+  bedrock_support_InvokeModelResponseBody : +Role string
+  bedrock_support_InvokeModelResponseBody : +Type string
+  bedrock_support_InvokeModelResponseBody : +ID string
+  bedrock_support_Result : +CompletionReason string
+  bedrock_support_Result : +OutputText string
+  bedrock_support_Result : +TokenCount int
+  NovaResponse : +response NResponse
+  AmazonResponse : +response IResponse
+  Completion : +Data Data
+  Data : +Text string
+  AI21Response : +response IResponse
+  CohereResponse : +response IResponse
+  CohereMessagesResponse : +response IResponse
+  AmazonCompletion : +completion ICompletion
+  AI21 : +completion ICompletion
+  AI21 : GetCompletion() -> GetCompletion
+  CohereMessagesCompletion : +completion ICompletion
+  CohereCompletion : +completion ICompletion
+  BedrockModel : +Config BedrockModelConfig
+  BedrockModel : +Response IResponse
+  BedrockModel : +Completion ICompletion
+  BedrockModel : +Name string
+  BedrockModelConfig : +ModelName string
+  BedrockModelConfig : +TopP float32
+  BedrockModelConfig : +Temperature float32
+  BedrockModelConfig : +MaxTokens int
+  InteractionRunner : +contextWindow []byte
+  InteractionRunner : +State chan INTERACTIVE_STATE
+  InteractionRunner : +config *analysis.Analysis
+  K8sApiReference : +OpenapiSchema *openapi_v2.Document
+  K8sApiReference : +Kind string
+  K8sApiReference : +ApiVersion schema.GroupVersion
+  kubernetes_Client : +DynamicClient dynamic.Interface
+  kubernetes_Client : +ServerVersion *version.Info
+  kubernetes_Client : +Config *rest.Config
+  kubernetes_Client : +CtrlClient ctrl.Client
+  kubernetes_Client : +Client kubernetes.Interface
+  custom_CustomAnalyzer : +Connection Connection
+  custom_CustomAnalyzer : +Name string
+  custom_Connection : +Port string
+  custom_Connection : +Url string
+  custom_Client : +analyzerClient rpc.CustomAnalyzerServiceClient
+  custom_Client : +c *grpc.ClientConn
+  analyzer_StatefulSetInfo : +appsv1.StatefulSet appsv1.StatefulSet
+  analyzer_ReplicaSetInfo : +appsv1.ReplicaSet appsv1.ReplicaSet
+  analyzer_ReplicationControllerInfo : +corev1.ReplicationController corev1.ReplicationController
+  analyzer_DeploymentInfo : +appsv1.Deployment appsv1.Deployment
+  ConfigRequest__ProjectId : +ProjectId string
+  ConfigRequest__ProjectId : +ContainerName string
+  ConfigRequest__ProjectId : +StorageAccount string
+  ConfigRequest__ProjectId : +Insecure bool
+  ConfigRequest__ProjectId : +Endpoint string
+  ConfigRequest__ProjectId : +Region string
+  ConfigRequest__ProjectId : +BucketName string
+  ConfigRequest__ProjectId : +Type string
+  ConfigRequest__ContainerName : +ProjectId string
+  ConfigRequest__ContainerName : +ContainerName string
+  ConfigRequest__ContainerName : +StorageAccount string
+  ConfigRequest__ContainerName : +Insecure bool
+  ConfigRequest__ContainerName : +Endpoint string
+  ConfigRequest__ContainerName : +Region string
+  ConfigRequest__ContainerName : +BucketName string
+  ConfigRequest__ContainerName : +Type string
+  ConfigRequest__StorageAccount : +ProjectId string
+  ConfigRequest__StorageAccount : +ContainerName string
+  ConfigRequest__StorageAccount : +StorageAccount string
+  ConfigRequest__StorageAccount : +Insecure bool
+  ConfigRequest__StorageAccount : +Endpoint string
+  ConfigRequest__StorageAccount : +Region string
+  ConfigRequest__StorageAccount : +BucketName string
+  ConfigRequest__StorageAccount : +Type string
+  ConfigRequest__Insecure : +ProjectId string
+  ConfigRequest__Insecure : +ContainerName string
+  ConfigRequest__Insecure : +StorageAccount string
+  ConfigRequest__Insecure : +Insecure bool
+  ConfigRequest__Insecure : +Endpoint string
+  ConfigRequest__Insecure : +Region string
+  ConfigRequest__Insecure : +BucketName string
+  ConfigRequest__Insecure : +Type string
+  ConfigRequest__Endpoint : +ProjectId string
+  ConfigRequest__Endpoint : +ContainerName string
+  ConfigRequest__Endpoint : +StorageAccount string
+  ConfigRequest__Endpoint : +Insecure bool
+  ConfigRequest__Endpoint : +Endpoint string
+  ConfigRequest__Endpoint : +Region string
+  ConfigRequest__Endpoint : +BucketName string
+  ConfigRequest__Endpoint : +Type string
+  ConfigRequest__Region : +ProjectId string
+  ConfigRequest__Region : +ContainerName string
+  ConfigRequest__Region : +StorageAccount string
+  ConfigRequest__Region : +Insecure bool
+  ConfigRequest__Region : +Endpoint string
+  ConfigRequest__Region : +Region string
+  ConfigRequest__Region : +BucketName string
+  ConfigRequest__Region : +Type string
+  ConfigRequest__BucketName : +ProjectId string
+  ConfigRequest__BucketName : +ContainerName string
+  ConfigRequest__BucketName : +StorageAccount string
+  ConfigRequest__BucketName : +Insecure bool
+  ConfigRequest__BucketName : +Endpoint string
+  ConfigRequest__BucketName : +Region string
+  ConfigRequest__BucketName : +BucketName string
+  ConfigRequest__BucketName : +Type string
+  ConfigRequest__Type : +ProjectId string
+  ConfigRequest__Type : +ContainerName string
+  ConfigRequest__Type : +StorageAccount string
+  ConfigRequest__Type : +Insecure bool
+  ConfigRequest__Type : +Endpoint string
+  ConfigRequest__Type : +Region string
+  ConfigRequest__Type : +BucketName string
+  ConfigRequest__Type : +Type string
+  ConfigRequest__Cache : +ProjectId string
+  ConfigRequest__Cache : +ContainerName string
+  ConfigRequest__Cache : +StorageAccount string
+  ConfigRequest__Cache : +Insecure bool
+  ConfigRequest__Cache : +Endpoint string
+  ConfigRequest__Cache : +Region string
+  ConfigRequest__Cache : +BucketName string
+  ConfigRequest__Cache : +Type string
+  ConfigRequest__Port : +Port int
+  ConfigRequest__Port : +Url string
+  ConfigRequest__Url : +Port int
+  ConfigRequest__Url : +Url string
+  ConfigRequest__Connection : +Port int
+  ConfigRequest__Connection : +Url string
+  JSONRPCResponse__Type : +Type []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Type : +Text []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Type : +Content []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Type : +Type string
+  JSONRPCResponse__Type : +Text string
+  JSONRPCResponse__Text : +Type []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Text : +Text []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Text : +Content []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Text : +Type string
+  JSONRPCResponse__Text : +Text string
+  JSONRPCResponse__Content : +Type []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Content : +Text []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Content : +Content []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Content : +Type string
+  JSONRPCResponse__Content : +Text string
+  JSONRPCResponse__Result : +Type []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Result : +Text []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Result : +Content []struct {\n			Text string \n			Type string \n		}
+  JSONRPCResponse__Result : +Type string
+  JSONRPCResponse__Result : +Text string
+  AmazonNovaResponse__Message : +Message Message
+  AmazonNovaResponse__Output : +Message Message
+  InvokeModelResponseBody__OutputTokens : +OutputTokens int
+  InvokeModelResponseBody__OutputTokens : +InputTokens int
+  InvokeModelResponseBody__InputTokens : +OutputTokens int
+  InvokeModelResponseBody__InputTokens : +InputTokens int
+  InvokeModelResponseBody__Usage : +OutputTokens int
+  InvokeModelResponseBody__Usage : +InputTokens int
+  Analysis --> IAI
+  ConfigRequest *-- ConfigRequest__ProjectId
+  ConfigRequest *-- ConfigRequest__ContainerName
+  ConfigRequest *-- ConfigRequest__StorageAccount
+  ConfigRequest *-- ConfigRequest__Insecure
+  ConfigRequest *-- ConfigRequest__Endpoint
+  ConfigRequest *-- ConfigRequest__Region
+  ConfigRequest *-- ConfigRequest__BucketName
+  ConfigRequest *-- ConfigRequest__Type
+  ConfigRequest *-- ConfigRequest__Cache
+  ConfigRequest *-- ConfigRequest__Port
+  ConfigRequest *-- ConfigRequest__Url
+  ConfigRequest *-- ConfigRequest__Connection
+  JSONRPCResponse *-- JSONRPCResponse__Type
+  JSONRPCResponse *-- JSONRPCResponse__Text
+  JSONRPCResponse *-- JSONRPCResponse__Content
+  JSONRPCResponse *-- JSONRPCResponse__Result
+  Analyzer --> IAI
+  AmazonNovaResponse *-- AmazonNovaResponse__Message
+  AmazonNovaResponse *-- AmazonNovaResponse__Output
+  bedrock_support_InvokeModelResponseBody *-- InvokeModelResponseBody__OutputTokens
+  bedrock_support_InvokeModelResponseBody *-- InvokeModelResponseBody__InputTokens
+  bedrock_support_InvokeModelResponseBody *-- InvokeModelResponseBody__Usage
+  InteractionRunner --> INTERACTIVE_STATE

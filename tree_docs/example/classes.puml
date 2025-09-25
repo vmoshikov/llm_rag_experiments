@@ -1,0 +1,800 @@
+@startuml
+set namespaceSeparator none
+hide empty members
+package "cmd/dump/dump.go" as file_cmd_dump_dump_go {
+  class "DumpOut" as DumpOut
+  class "K8sGPTInfo" as K8sGPTInfo
+}
+package "pkg/ai/amazonbedrock.go" as file_pkg_ai_amazonbedrock_go {
+  class "AmazonBedRockClient" as AmazonBedRockClient
+}
+package "pkg/ai/amazonbedrock_mock_test.go" as file_pkg_ai_amazonbedrock_mock_test_go {
+  class "MockBedrockClient" as MockBedrockClient
+  class "MockBedrockRuntimeClient" as MockBedrockRuntimeClient
+}
+package "pkg/ai/amazonsagemaker.go" as file_pkg_ai_amazonsagemaker_go {
+  class "Parameters" as Parameters
+  class "Request" as Request
+  class "SageMakerAIClient" as SageMakerAIClient
+  class "ai.Message" as ai_Message
+}
+package "pkg/ai/azureopenai.go" as file_pkg_ai_azureopenai_go {
+  class "AzureAIClient" as AzureAIClient
+}
+package "pkg/ai/bedrock_support/completions.go" as file_pkg_ai_bedrock_support_completions_go {
+  class "AI21" as AI21
+  class "AmazonCompletion" as AmazonCompletion
+  class "CohereCompletion" as CohereCompletion
+  class "CohereMessagesCompletion" as CohereMessagesCompletion
+}
+package "pkg/ai/bedrock_support/model.go" as file_pkg_ai_bedrock_support_model_go {
+  class "BedrockModel" as BedrockModel
+  class "BedrockModelConfig" as BedrockModelConfig
+}
+package "pkg/ai/bedrock_support/model_test.go" as file_pkg_ai_bedrock_support_model_test_go {
+  class "MockCompletion" as MockCompletion
+  class "MockResponse" as MockResponse
+}
+package "pkg/ai/bedrock_support/responses.go" as file_pkg_ai_bedrock_support_responses_go {
+  class "AI21Response" as AI21Response
+  class "AmazonNovaResponse" as AmazonNovaResponse
+  class "AmazonResponse" as AmazonResponse
+  class "CohereMessagesResponse" as CohereMessagesResponse
+  class "CohereResponse" as CohereResponse
+  class "Completion" as Completion
+  class "Content" as Content
+  class "Data" as Data
+  class "NovaResponse" as NovaResponse
+  class "UsageDetails" as UsageDetails
+  class "bedrock_support.InvokeModelResponseBody" as bedrock_support_InvokeModelResponseBody
+  class "bedrock_support.InvokeModelResponseBody" as bedrock_support_InvokeModelResponseBody
+  class "bedrock_support.InvokeModelResponseBody" as bedrock_support_InvokeModelResponseBody
+  class "bedrock_support.InvokeModelResponseBody" as bedrock_support_InvokeModelResponseBody
+  class "bedrock_support.Message" as bedrock_support_Message
+  class "bedrock_support.Result" as bedrock_support_Result
+}
+package "pkg/ai/cohere.go" as file_pkg_ai_cohere_go {
+  class "CohereClient" as CohereClient
+}
+package "pkg/ai/customrest.go" as file_pkg_ai_customrest_go {
+  class "CustomRestClient" as CustomRestClient
+  class "CustomRestRequest" as CustomRestRequest
+  class "CustomRestResponse" as CustomRestResponse
+}
+package "pkg/ai/factory.go" as file_pkg_ai_factory_go {
+  class "DefaultAIClientFactory" as DefaultAIClientFactory
+  class "ViperConfigProvider" as ViperConfigProvider
+}
+package "pkg/ai/googlegenai.go" as file_pkg_ai_googlegenai_go {
+  class "GoogleGenAIClient" as GoogleGenAIClient
+}
+package "pkg/ai/googlevertexai.go" as file_pkg_ai_googlevertexai_go {
+  class "GoogleVertexAIClient" as GoogleVertexAIClient
+}
+package "pkg/ai/huggingface.go" as file_pkg_ai_huggingface_go {
+  class "HuggingfaceClient" as HuggingfaceClient
+}
+package "pkg/ai/iai.go" as file_pkg_ai_iai_go {
+  class "AIConfiguration" as AIConfiguration
+  class "AIProvider" as AIProvider
+  class "nopCloser" as nopCloser
+}
+package "pkg/ai/interactive/interactive.go" as file_pkg_ai_interactive_interactive_go {
+  class "InteractionRunner" as InteractionRunner
+}
+package "pkg/ai/localai.go" as file_pkg_ai_localai_go {
+  class "LocalAIClient" as LocalAIClient
+}
+package "pkg/ai/noopai.go" as file_pkg_ai_noopai_go {
+  class "NoOpAIClient" as NoOpAIClient
+}
+package "pkg/ai/ocigenai.go" as file_pkg_ai_ocigenai_go {
+  class "OCIGenAIClient" as OCIGenAIClient
+}
+package "pkg/ai/ollama.go" as file_pkg_ai_ollama_go {
+  class "OllamaClient" as OllamaClient
+}
+package "pkg/ai/openai.go" as file_pkg_ai_openai_go {
+  class "OpenAIClient" as OpenAIClient
+  class "OpenAIHeaderTransport" as OpenAIHeaderTransport
+}
+package "pkg/ai/openai_header_transport_test.go" as file_pkg_ai_openai_header_transport_test_go {
+  class "mockConfig" as mockConfig
+}
+package "pkg/ai/watsonxai.go" as file_pkg_ai_watsonxai_go {
+  class "IBMWatsonxAIClient" as IBMWatsonxAIClient
+}
+package "pkg/analysis/analysis.go" as file_pkg_analysis_analysis_go {
+  class "Analysis" as Analysis
+  class "JsonOutput" as JsonOutput
+}
+package "pkg/analyzer/catalogsource.go" as file_pkg_analyzer_catalogsource_go {
+  class "CatalogSourceAnalyzer" as CatalogSourceAnalyzer
+}
+package "pkg/analyzer/clustercatalog.go" as file_pkg_analyzer_clustercatalog_go {
+  class "ClusterCatalogAnalyzer" as ClusterCatalogAnalyzer
+}
+package "pkg/analyzer/clusterextension.go" as file_pkg_analyzer_clusterextension_go {
+  class "ClusterExtensionAnalyzer" as ClusterExtensionAnalyzer
+}
+package "pkg/analyzer/clusterserviceversion.go" as file_pkg_analyzer_clusterserviceversion_go {
+  class "ClusterServiceVersionAnalyzer" as ClusterServiceVersionAnalyzer
+}
+package "pkg/analyzer/configmap.go" as file_pkg_analyzer_configmap_go {
+  class "ConfigMapAnalyzer" as ConfigMapAnalyzer
+}
+package "pkg/analyzer/cronjob.go" as file_pkg_analyzer_cronjob_go {
+  class "CronJobAnalyzer" as CronJobAnalyzer
+}
+package "pkg/analyzer/deployment.go" as file_pkg_analyzer_deployment_go {
+  class "DeploymentAnalyzer" as DeploymentAnalyzer
+}
+package "pkg/analyzer/gateway.go" as file_pkg_analyzer_gateway_go {
+  class "GatewayAnalyzer" as GatewayAnalyzer
+}
+package "pkg/analyzer/gatewayclass.go" as file_pkg_analyzer_gatewayclass_go {
+  class "GatewayClassAnalyzer" as GatewayClassAnalyzer
+}
+package "pkg/analyzer/hpa.go" as file_pkg_analyzer_hpa_go {
+  class "HpaAnalyzer" as HpaAnalyzer
+  class "analyzer.DeploymentInfo" as analyzer_DeploymentInfo
+  class "analyzer.ReplicaSetInfo" as analyzer_ReplicaSetInfo
+  class "analyzer.ReplicationControllerInfo" as analyzer_ReplicationControllerInfo
+  class "analyzer.StatefulSetInfo" as analyzer_StatefulSetInfo
+}
+package "pkg/analyzer/httproute.go" as file_pkg_analyzer_httproute_go {
+  class "HTTPRouteAnalyzer" as HTTPRouteAnalyzer
+}
+package "pkg/analyzer/ingress.go" as file_pkg_analyzer_ingress_go {
+  class "IngressAnalyzer" as IngressAnalyzer
+}
+package "pkg/analyzer/instalplan.go" as file_pkg_analyzer_instalplan_go {
+  class "InstallPlanAnalyzer" as InstallPlanAnalyzer
+}
+package "pkg/analyzer/job.go" as file_pkg_analyzer_job_go {
+  class "JobAnalyzer" as JobAnalyzer
+}
+package "pkg/analyzer/log.go" as file_pkg_analyzer_log_go {
+  class "LogAnalyzer" as LogAnalyzer
+}
+package "pkg/analyzer/mutating_webhook.go" as file_pkg_analyzer_mutating_webhook_go {
+  class "MutatingWebhookAnalyzer" as MutatingWebhookAnalyzer
+}
+package "pkg/analyzer/netpol.go" as file_pkg_analyzer_netpol_go {
+  class "NetworkPolicyAnalyzer" as NetworkPolicyAnalyzer
+}
+package "pkg/analyzer/node.go" as file_pkg_analyzer_node_go {
+  class "NodeAnalyzer" as NodeAnalyzer
+}
+package "pkg/analyzer/operatorgroup.go" as file_pkg_analyzer_operatorgroup_go {
+  class "OperatorGroupAnalyzer" as OperatorGroupAnalyzer
+}
+package "pkg/analyzer/pdb.go" as file_pkg_analyzer_pdb_go {
+  class "PdbAnalyzer" as PdbAnalyzer
+}
+package "pkg/analyzer/pod.go" as file_pkg_analyzer_pod_go {
+  class "PodAnalyzer" as PodAnalyzer
+}
+package "pkg/analyzer/pvc.go" as file_pkg_analyzer_pvc_go {
+  class "PvcAnalyzer" as PvcAnalyzer
+}
+package "pkg/analyzer/rs.go" as file_pkg_analyzer_rs_go {
+  class "ReplicaSetAnalyzer" as ReplicaSetAnalyzer
+}
+package "pkg/analyzer/security.go" as file_pkg_analyzer_security_go {
+  class "SecurityAnalyzer" as SecurityAnalyzer
+}
+package "pkg/analyzer/service.go" as file_pkg_analyzer_service_go {
+  class "ServiceAnalyzer" as ServiceAnalyzer
+}
+package "pkg/analyzer/statefulset.go" as file_pkg_analyzer_statefulset_go {
+  class "StatefulSetAnalyzer" as StatefulSetAnalyzer
+}
+package "pkg/analyzer/storage.go" as file_pkg_analyzer_storage_go {
+  class "StorageAnalyzer" as StorageAnalyzer
+}
+package "pkg/analyzer/subscription.go" as file_pkg_analyzer_subscription_go {
+  class "SubscriptionAnalyzer" as SubscriptionAnalyzer
+}
+package "pkg/analyzer/validating_webhook.go" as file_pkg_analyzer_validating_webhook_go {
+  class "ValidatingWebhookAnalyzer" as ValidatingWebhookAnalyzer
+}
+package "pkg/cache/azuresa_based.go" as file_pkg_cache_azuresa_based_go {
+  class "AzureCache" as AzureCache
+  class "AzureCacheConfiguration" as AzureCacheConfiguration
+}
+package "pkg/cache/file_based.go" as file_pkg_cache_file_based_go {
+  class "FileBasedCache" as FileBasedCache
+}
+package "pkg/cache/gcs_based.go" as file_pkg_cache_gcs_based_go {
+  class "GCSCache" as GCSCache
+  class "GCSCacheConfiguration" as GCSCacheConfiguration
+}
+package "pkg/cache/interplex_based.go" as file_pkg_cache_interplex_based_go {
+  class "InterplexCache" as InterplexCache
+  class "InterplexCacheConfiguration" as InterplexCacheConfiguration
+  class "InterplexClient" as InterplexClient
+}
+package "pkg/cache/interplex_based_test.go" as file_pkg_cache_interplex_based_test_go {
+  class "mockCacheService" as mockCacheService
+}
+package "pkg/cache/s3_based.go" as file_pkg_cache_s3_based_go {
+  class "S3Cache" as S3Cache
+  class "S3CacheConfiguration" as S3CacheConfiguration
+}
+package "pkg/cache/types.go" as file_pkg_cache_types_go {
+  class "CacheObjectDetails" as CacheObjectDetails
+  class "CacheProvider" as CacheProvider
+}
+package "pkg/common/types.go" as file_pkg_common_types_go {
+  class "AnalysisStats" as AnalysisStats
+  class "Analyzer" as Analyzer
+  class "BundleMetadata" as BundleMetadata
+  class "CRDUpgradeSafetyPreflightConfig" as CRDUpgradeSafetyPreflightConfig
+  class "CatalogFilter" as CatalogFilter
+  class "CatalogSource" as CatalogSource
+  class "ClusterCatalog" as ClusterCatalog
+  class "ClusterCatalogList" as ClusterCatalogList
+  class "ClusterCatalogSpec" as ClusterCatalogSpec
+  class "ClusterCatalogStatus" as ClusterCatalogStatus
+  class "ClusterCatalogURLs" as ClusterCatalogURLs
+  class "ClusterExtension" as ClusterExtension
+  class "ClusterExtensionInstallConfig" as ClusterExtensionInstallConfig
+  class "ClusterExtensionInstallStatus" as ClusterExtensionInstallStatus
+  class "ClusterExtensionSpec" as ClusterExtensionSpec
+  class "ClusterExtensionStatus" as ClusterExtensionStatus
+  class "Failure" as Failure
+  class "ImageSource" as ImageSource
+  class "PreAnalysis" as PreAnalysis
+  class "PreflightConfig" as PreflightConfig
+  class "ResolvedCatalogSource" as ResolvedCatalogSource
+  class "ResolvedImageSource" as ResolvedImageSource
+  class "Sensitive" as Sensitive
+  class "ServiceAccountReference" as ServiceAccountReference
+  class "SourceConfig" as SourceConfig
+  class "common.Result" as common_Result
+}
+package "pkg/custom/client.go" as file_pkg_custom_client_go {
+  class "custom.Client" as custom_Client
+}
+package "pkg/custom/types.go" as file_pkg_custom_types_go {
+  class "custom.Connection" as custom_Connection
+  class "custom.CustomAnalyzer" as custom_CustomAnalyzer
+}
+package "pkg/custom_analyzer/customAnalyzer.go" as file_pkg_custom_analyzer_customAnalyzer_go {
+  class "CustomAnalyzerConfiguration" as CustomAnalyzerConfiguration
+  class "custom_analyzer.Connection" as custom_analyzer_Connection
+  class "custom_analyzer.CustomAnalyzer" as custom_analyzer_CustomAnalyzer
+}
+package "pkg/integration/aws/aws.go" as file_pkg_integration_aws_aws_go {
+  class "AWS" as AWS
+}
+package "pkg/integration/aws/eks.go" as file_pkg_integration_aws_eks_go {
+  class "EKSAnalyzer" as EKSAnalyzer
+}
+package "pkg/integration/integration.go" as file_pkg_integration_integration_go {
+  class "Integration" as Integration
+}
+package "pkg/integration/keda/keda.go" as file_pkg_integration_keda_keda_go {
+  class "Keda" as Keda
+}
+package "pkg/integration/keda/scaledobject_analyzer.go" as file_pkg_integration_keda_scaledobject_analyzer_go {
+  class "ScaledObjectAnalyzer" as ScaledObjectAnalyzer
+  class "keda.DeploymentInfo" as keda_DeploymentInfo
+  class "keda.ReplicaSetInfo" as keda_ReplicaSetInfo
+  class "keda.ReplicationControllerInfo" as keda_ReplicationControllerInfo
+  class "keda.StatefulSetInfo" as keda_StatefulSetInfo
+}
+package "pkg/integration/kyverno/analyzer.go" as file_pkg_integration_kyverno_analyzer_go {
+  class "KyvernoAnalyzer" as KyvernoAnalyzer
+}
+package "pkg/integration/kyverno/kyverno.go" as file_pkg_integration_kyverno_kyverno_go {
+  class "Kyverno" as Kyverno
+}
+package "pkg/integration/prometheus/config_analyzer.go" as file_pkg_integration_prometheus_config_analyzer_go {
+  class "ConfigAnalyzer" as ConfigAnalyzer
+  class "podConfig" as podConfig
+}
+package "pkg/integration/prometheus/prometheus.go" as file_pkg_integration_prometheus_prometheus_go {
+  class "Prometheus" as Prometheus
+}
+package "pkg/integration/prometheus/relabel_analyzer.go" as file_pkg_integration_prometheus_relabel_analyzer_go {
+  class "RelabelAnalyzer" as RelabelAnalyzer
+}
+package "pkg/kubernetes/types.go" as file_pkg_kubernetes_types_go {
+  class "K8sApiReference" as K8sApiReference
+  class "kubernetes.Client" as kubernetes_Client
+}
+package "pkg/server/analyze/handler.go" as file_pkg_server_analyze_handler_go {
+  class "analyze.Handler" as analyze_Handler
+}
+package "pkg/server/client_example/main.go" as file_pkg_server_client_example_main_go {
+  class "JSONRPCResponse" as JSONRPCResponse
+  class "main.AnalyzeRequest" as main_AnalyzeRequest
+}
+package "pkg/server/config/handler.go" as file_pkg_server_config_handler_go {
+  class "config.Handler" as config_Handler
+}
+package "pkg/server/mcp.go" as file_pkg_server_mcp_go {
+  class "AnalyzeResponse" as AnalyzeResponse
+  class "ClusterInfoRequest" as ClusterInfoRequest
+  class "ClusterInfoResponse" as ClusterInfoResponse
+  class "ConfigRequest" as ConfigRequest
+  class "ConfigResponse" as ConfigResponse
+  class "K8sGptMCPServer" as K8sGptMCPServer
+  class "server.AnalyzeRequest" as server_AnalyzeRequest
+  class "zapLoggerAdapter" as zapLoggerAdapter
+}
+package "pkg/server/query/handler.go" as file_pkg_server_query_handler_go {
+  class "query.Handler" as query_Handler
+}
+package "pkg/server/query/query_test.go" as file_pkg_server_query_query_test_go {
+  class "MockAI" as MockAI
+  class "MockAIClientFactory" as MockAIClientFactory
+  class "MockConfigProvider" as MockConfigProvider
+}
+package "pkg/server/server.go" as file_pkg_server_server_go {
+  class "Config" as Config
+  class "Health" as Health
+}
+  AI21 : +completion : ICompletion
+  AI21Response : +response : IResponse
+  AIConfiguration : +DefaultProvider : string
+  AIConfiguration : +Providers : []AIProvider
+  AIProvider : +CustomHeaders : []http.Header
+  AIProvider : +OrganizationId : string
+  AIProvider : +MaxTokens : int
+  AIProvider : +TopK : int32
+  AIProvider : +TopP : float32
+  AIProvider : +CompartmentId : string
+  AIProvider : +ProviderId : string
+  AIProvider : +ProviderRegion : string
+  AIProvider : +Temperature : float32
+  AIProvider : +Engine : string
+  AIProvider : +EndpointName : string
+  AIProvider : +ProxyPort : string
+  AIProvider : +ProxyEndpoint : string
+  AIProvider : +BaseURL : string
+  AIProvider : +Password : string
+  AIProvider : +Model : string
+  AIProvider : +Name : string
+  AWS : +sess : *session.Session
+  AmazonBedRockClient : +models : []bedrock_support.BedrockModel
+  AmazonBedRockClient : +maxTokens : int
+  AmazonBedRockClient : +topP : float32
+  AmazonBedRockClient : +temperature : float32
+  AmazonBedRockClient : +model : *bedrock_support.BedrockModel
+  AmazonBedRockClient : +mgmtClient : BedrockManagementAPI
+  AmazonBedRockClient : +client : BedrockRuntimeAPI
+  AmazonBedRockClient : +nopCloser : nopCloser
+  AmazonCompletion : +completion : ICompletion
+  AmazonNovaResponse : +Usage : UsageDetails
+  AmazonNovaResponse : +StopReason : string
+  AmazonNovaResponse : +Message : struct{…}
+  AmazonNovaResponse : +Output : struct{…}
+  AmazonNovaResponse : +Message : Message
+  AmazonResponse : +response : IResponse
+  Analysis : +Stats : []common.AnalysisStats
+  Analysis : +WithStats : bool
+  Analysis : +WithDoc : bool
+  Analysis : +AnalysisAIProvider : string
+  Analysis : +MaxConcurrency : int
+  Analysis : +Explain : bool
+  Analysis : +Cache : cache.ICache
+  Analysis : +LabelSelector : string
+  Analysis : +Namespace : string
+  Analysis : +Errors : []string
+  Analysis : +Results : []common.Result
+  Analysis : +AIClient : ai.IAI
+  Analysis : +Language : string
+  Analysis : +Client : *kubernetes.Client
+  Analysis : +Filters : []string
+  Analysis : +Context : context.Context
+  AnalysisStats : +DurationTime : time.Duration
+  AnalysisStats : +Analyzer : string
+  AnalyzeResponse : +Results : string
+  Analyzer : +OpenapiSchema : *openapi_v2.Document
+  Analyzer : +Results : []Result
+  Analyzer : +PreAnalysis : map[string]PreAnalysis
+  Analyzer : +AIClient : ai.IAI
+  Analyzer : +LabelSelector : string
+  Analyzer : +Namespace : string
+  Analyzer : +Context : context.Context
+  Analyzer : +Client : *kubernetes.Client
+  AzureAIClient : +temperature : float32
+  AzureAIClient : +model : string
+  AzureAIClient : +client : *openai.Client
+  AzureAIClient : +nopCloser : nopCloser
+  AzureCache : +session : *azblob.Client
+  AzureCache : +containerName : string
+  AzureCache : +noCache : bool
+  AzureCache : +ctx : context.Context
+  AzureCacheConfiguration : +ContainerName : string
+  AzureCacheConfiguration : +StorageAccount : string
+  BedrockModel : +Config : BedrockModelConfig
+  BedrockModel : +Response : IResponse
+  BedrockModel : +Completion : ICompletion
+  BedrockModel : +Name : string
+  BedrockModelConfig : +ModelName : string
+  BedrockModelConfig : +TopP : float32
+  BedrockModelConfig : +Temperature : float32
+  BedrockModelConfig : +MaxTokens : int
+  BundleMetadata : +Version : string
+  BundleMetadata : +Name : string
+  CRDUpgradeSafetyPreflightConfig : +Enforcement : CRDUpgradeSafetyEnforcement
+  CacheObjectDetails : +UpdatedAt : time.Time
+  CacheObjectDetails : +Name : string
+  CacheProvider : +Interplex : InterplexCacheConfiguration
+  CacheProvider : +S3 : S3CacheConfiguration
+  CacheProvider : +Azure : AzureCacheConfiguration
+  CacheProvider : +GCS : GCSCacheConfiguration
+  CacheProvider : +CurrentCacheType : string
+  CatalogFilter : +UpgradeConstraintPolicy : UpgradeConstraintPolicy
+  CatalogFilter : +Selector : *metav1.LabelSelector
+  CatalogFilter : +Channels : []string
+  CatalogFilter : +Version : string
+  CatalogFilter : +PackageName : string
+  CatalogSource : +Image : *ImageSource
+  CatalogSource : +Type : SourceType
+  ClusterCatalog : +Status : ClusterCatalogStatus
+  ClusterCatalog : +Spec : ClusterCatalogSpec
+  ClusterCatalog : +metav1.ObjectMeta : metav1.ObjectMeta
+  ClusterCatalog : +metav1.TypeMeta : metav1.TypeMeta
+  ClusterCatalogList : +Items : []ClusterCatalog
+  ClusterCatalogList : +metav1.ListMeta : metav1.ListMeta
+  ClusterCatalogList : +metav1.TypeMeta : metav1.TypeMeta
+  ClusterCatalogSpec : +AvailabilityMode : AvailabilityMode
+  ClusterCatalogSpec : +Priority : int32
+  ClusterCatalogSpec : +Source : CatalogSource
+  ClusterCatalogStatus : +LastUnpacked : *metav1.Time
+  ClusterCatalogStatus : +URLs : *ClusterCatalogURLs
+  ClusterCatalogStatus : +ResolvedSource : *ResolvedCatalogSource
+  ClusterCatalogStatus : +Conditions : []metav1.Condition
+  ClusterCatalogURLs : +Base : string
+  ClusterExtension : +Status : ClusterExtensionStatus
+  ClusterExtension : +Spec : ClusterExtensionSpec
+  ClusterExtension : +metav1.ObjectMeta : metav1.ObjectMeta
+  ClusterExtension : +metav1.TypeMeta : metav1.TypeMeta
+  ClusterExtensionInstallConfig : +Preflight : *PreflightConfig
+  ClusterExtensionInstallStatus : +Bundle : BundleMetadata
+  ClusterExtensionSpec : +Install : *ClusterExtensionInstallConfig
+  ClusterExtensionSpec : +Source : SourceConfig
+  ClusterExtensionSpec : +ServiceAccount : ServiceAccountReference
+  ClusterExtensionSpec : +Namespace : string
+  ClusterExtensionStatus : +Install : *ClusterExtensionInstallStatus
+  ClusterExtensionStatus : +Conditions : []metav1.Condition
+  ClusterInfoResponse : +Info : string
+  CohereClient : +maxTokens : int
+  CohereClient : +temperature : float32
+  CohereClient : +model : string
+  CohereClient : +client : *cohere.Client
+  CohereClient : +nopCloser : nopCloser
+  CohereCompletion : +completion : ICompletion
+  CohereMessagesCompletion : +completion : ICompletion
+  CohereMessagesResponse : +response : IResponse
+  CohereResponse : +response : IResponse
+  Completion : +Data : Data
+  Config : +EnableHttp : bool
+  Config : +listener : net.Listener
+  Config : +metricsServer : *http.Server
+  Config : +Logger : *zap.Logger
+  Config : +QueryHandler : *query.Handler
+  Config : +AnalyzeHandler : *analyze.Handler
+  Config : +ConfigHandler : *config.Handler
+  Config : +Output : string
+  Config : +Token : string
+  Config : +Key : string
+  Config : +Backend : string
+  Config : +MetricsPort : string
+  Config : +Port : string
+  ConfigRequest : +ProjectId : struct{…}
+  ConfigRequest : +ContainerName : struct{…}
+  ConfigRequest : +StorageAccount : struct{…}
+  ConfigRequest : +Insecure : struct{…}
+  ConfigRequest : +Endpoint : struct{…}
+  ConfigRequest : +Region : struct{…}
+  ConfigRequest : +BucketName : struct{…}
+  ConfigRequest : +Type : struct{…}
+  ConfigRequest : +Cache : struct{…}
+  ConfigRequest : +ProjectId : string
+  ConfigRequest : +ContainerName : string
+  ConfigRequest : +StorageAccount : string
+  ConfigRequest : +Insecure : bool
+  ConfigRequest : +Endpoint : string
+  ConfigRequest : +Region : string
+  ConfigRequest : +BucketName : string
+  ConfigRequest : +Type : string
+  ConfigRequest : +Port : []struct { Name string Connection struct { Url string Port int } }
+  ConfigRequest : +Url : []struct { Name string Connection struct { Url string Port int } }
+  ConfigRequest : +Connection : []struct { Name string Connection struct { Url string Port int } }
+  ConfigRequest : +Name : []struct { Name string Connection struct { Url string Port int } }
+  ConfigRequest : +CustomAnalyzers : []struct { Name string Connection struct { Url string Port int } }
+  ConfigRequest : +Port : struct{…}
+  ConfigRequest : +Url : struct{…}
+  ConfigRequest : +Connection : struct{…}
+  ConfigRequest : +Port : int
+  ConfigRequest : +Url : string
+  ConfigRequest : +Name : string
+  ConfigResponse : +Status : string
+  Content : +Text : string
+  CustomAnalyzerConfiguration : +Connection : Connection
+  CustomAnalyzerConfiguration : +Name : string
+  CustomRestClient : +topK : int32
+  CustomRestClient : +topP : float32
+  CustomRestClient : +temperature : float32
+  CustomRestClient : +model : string
+  CustomRestClient : +token : string
+  CustomRestClient : +base : *url.URL
+  CustomRestClient : +client : *http.Client
+  CustomRestClient : +nopCloser : nopCloser
+  CustomRestRequest : +Options : map[string]interface{}
+  CustomRestRequest : +Prompt : string
+  CustomRestRequest : +Model : string
+  CustomRestResponse : +Response : string
+  CustomRestResponse : +CreatedAt : time.Time
+  CustomRestResponse : +Model : string
+  Data : +Text : string
+  DumpOut : +K8sGPTInfo : K8sGPTInfo
+  DumpOut : +KubenetesServerVersion : *version.Info
+  DumpOut : +ActiveFilters : []string
+  DumpOut : +AIConfiguration : ai.AIConfiguration
+  EKSAnalyzer : +session : *session.Session
+  Failure : +Sensitive : []Sensitive
+  Failure : +KubernetesDoc : string
+  Failure : +Text : string
+  FileBasedCache : +noCache : bool
+  GCSCache : +session : *storage.Client
+  GCSCache : +region : string
+  GCSCache : +projectId : string
+  GCSCache : +bucketName : string
+  GCSCache : +noCache : bool
+  GCSCache : +ctx : context.Context
+  GCSCacheConfiguration : +BucketName : string
+  GCSCacheConfiguration : +Region : string
+  GCSCacheConfiguration : +ProjectId : string
+  GoogleGenAIClient : +maxTokens : int
+  GoogleGenAIClient : +topK : int32
+  GoogleGenAIClient : +topP : float32
+  GoogleGenAIClient : +temperature : float32
+  GoogleGenAIClient : +model : string
+  GoogleGenAIClient : +client : *genai.Client
+  GoogleVertexAIClient : +maxTokens : int
+  GoogleVertexAIClient : +topK : int32
+  GoogleVertexAIClient : +topP : float32
+  GoogleVertexAIClient : +temperature : float32
+  GoogleVertexAIClient : +model : string
+  GoogleVertexAIClient : +client : *genai.Client
+  Health : +Failure : int
+  Health : +Success : int
+  Health : +Status : string
+  HuggingfaceClient : +maxTokens : int
+  HuggingfaceClient : +temperature : float32
+  HuggingfaceClient : +topK : int32
+  HuggingfaceClient : +topP : float32
+  HuggingfaceClient : +model : string
+  HuggingfaceClient : +client : *huggingface.InferenceClient
+  HuggingfaceClient : +nopCloser : nopCloser
+  IBMWatsonxAIClient : +maxNewTokens : int
+  IBMWatsonxAIClient : +topK : int32
+  IBMWatsonxAIClient : +topP : float32
+  IBMWatsonxAIClient : +temperature : float32
+  IBMWatsonxAIClient : +model : string
+  IBMWatsonxAIClient : +client : *wx.Client
+  IBMWatsonxAIClient : +nopCloser : nopCloser
+  ImageSource : +PollIntervalMinutes : *int
+  ImageSource : +Ref : string
+  InteractionRunner : +contextWindow : []byte
+  InteractionRunner : +State : chan INTERACTIVE_STATE
+  InteractionRunner : +config : *analysis.Analysis
+  InterplexCache : +noCache : bool
+  InterplexCache : +cacheServiceClient : rpc.CacheServiceClient
+  InterplexCache : +client : InterplexClient
+  InterplexCache : +configuration : InterplexCacheConfiguration
+  InterplexCacheConfiguration : +ConnectionString : string
+  JSONRPCResponse : +Message : *struct { Code int Message string }
+  JSONRPCResponse : +Code : *struct { Code int Message string }
+  JSONRPCResponse : +Error : *struct { Code int Message string }
+  JSONRPCResponse : +Message : string
+  JSONRPCResponse : +Code : int
+  JSONRPCResponse : +Type : struct{…}
+  JSONRPCResponse : +Text : struct{…}
+  JSONRPCResponse : +Content : struct{…}
+  JSONRPCResponse : +Result : struct{…}
+  JSONRPCResponse : +Type : []struct { Text string Type string }
+  JSONRPCResponse : +Text : []struct { Text string Type string }
+  JSONRPCResponse : +Content : []struct { Text string Type string }
+  JSONRPCResponse : +Type : string
+  JSONRPCResponse : +Text : string
+  JSONRPCResponse : +ID : int
+  JSONRPCResponse : +JSONRPC : string
+  JsonOutput : +Results : []common.Result
+  JsonOutput : +Problems : int
+  JsonOutput : +Status : AnalysisStatus
+  JsonOutput : +Errors : AnalysisErrors
+  JsonOutput : +Provider : string
+  K8sApiReference : +OpenapiSchema : *openapi_v2.Document
+  K8sApiReference : +Kind : string
+  K8sApiReference : +ApiVersion : schema.GroupVersion
+  K8sGPTInfo : +Date : string
+  K8sGPTInfo : +Commit : string
+  K8sGPTInfo : +Version : string
+  K8sGptMCPServer : +stdioServer : *server.StdioServer
+  K8sGptMCPServer : +httpServer : *server.StreamableHTTPServer
+  K8sGptMCPServer : +logger : *zap.Logger
+  K8sGptMCPServer : +useHTTP : bool
+  K8sGptMCPServer : +aiProvider : *ai.AIProvider
+  K8sGptMCPServer : +port : string
+  K8sGptMCPServer : +server : *server.MCPServer
+  Keda : +helm : helmclient.Client
+  KyvernoAnalyzer : +clusterReportAnalysis : bool
+  KyvernoAnalyzer : +policyReportAnalysis : bool
+  LocalAIClient : +OpenAIClient : OpenAIClient
+  MockAI : +mock.Mock : mock.Mock
+  MockAIClientFactory : +mock.Mock : mock.Mock
+  MockBedrockClient : +mock.Mock : mock.Mock
+  MockBedrockRuntimeClient : +mock.Mock : mock.Mock
+  MockConfigProvider : +mock.Mock : mock.Mock
+  NoOpAIClient : +nopCloser : nopCloser
+  NovaResponse : +response : NResponse
+  OCIGenAIClient : +maxTokens : int
+  OCIGenAIClient : +topK : int32
+  OCIGenAIClient : +topP : float32
+  OCIGenAIClient : +temperature : float32
+  OCIGenAIClient : +compartmentId : string
+  OCIGenAIClient : +modelID : string
+  OCIGenAIClient : +model : *generativeai.Model
+  OCIGenAIClient : +client : *generativeaiinference.GenerativeAiInferenceClient
+  OCIGenAIClient : +nopCloser : nopCloser
+  OllamaClient : +topP : float32
+  OllamaClient : +temperature : float32
+  OllamaClient : +model : string
+  OllamaClient : +client : *ollama.Client
+  OllamaClient : +nopCloser : nopCloser
+  OpenAIClient : +topP : float32
+  OpenAIClient : +temperature : float32
+  OpenAIClient : +model : string
+  OpenAIClient : +client : *openai.Client
+  OpenAIClient : +nopCloser : nopCloser
+  OpenAIHeaderTransport : +Headers : []http.Header
+  OpenAIHeaderTransport : +Origin : http.RoundTripper
+  Parameters : +Temperature : float64
+  Parameters : +TopK : float64
+  Parameters : +TopP : float64
+  Parameters : +MaxNewTokens : int
+  PreAnalysis : +Extension : ClusterExtension
+  PreAnalysis : +Catalog : ClusterCatalog
+  PreAnalysis : +KyvernoClusterPolicyReport : kyverno.ClusterPolicyReport
+  PreAnalysis : +KyvernoPolicyReport : kyverno.PolicyReport
+  PreAnalysis : +ScaledObject : keda.ScaledObject
+  PreAnalysis : +HTTPRoute : gtwapi.HTTPRoute
+  PreAnalysis : +Gateway : gtwapi.Gateway
+  PreAnalysis : +GatewayClass : gtwapi.GatewayClass
+  PreAnalysis : +MutatingWebhook : regv1.MutatingWebhookConfiguration
+  PreAnalysis : +ValidatingWebhook : regv1.ValidatingWebhookConfiguration
+  PreAnalysis : +Node : v1.Node
+  PreAnalysis : +NetworkPolicy : networkv1.NetworkPolicy
+  PreAnalysis : +StatefulSet : appsv1.StatefulSet
+  PreAnalysis : +PodDisruptionBudget : policyv1.PodDisruptionBudget
+  PreAnalysis : +HorizontalPodAutoscalers : autov2.HorizontalPodAutoscaler
+  PreAnalysis : +Ingress : networkv1.Ingress
+  PreAnalysis : +Endpoint : v1.Endpoints
+  PreAnalysis : +PersistentVolumeClaim : v1.PersistentVolumeClaim
+  PreAnalysis : +ReplicaSet : appsv1.ReplicaSet
+  PreAnalysis : +Deployment : appsv1.Deployment
+  PreAnalysis : +FailureDetails : []Failure
+  PreAnalysis : +Pod : v1.Pod
+  PreflightConfig : +CRDUpgradeSafety : *CRDUpgradeSafetyPreflightConfig
+  Request : +Parameters : Parameters
+  Request : +Inputs : [][]Message
+  ResolvedCatalogSource : +Image : *ResolvedImageSource
+  ResolvedCatalogSource : +Type : SourceType
+  ResolvedImageSource : +Ref : string
+  S3Cache : +session : *s3.S3
+  S3Cache : +bucketName : string
+  S3Cache : +noCache : bool
+  S3CacheConfiguration : +InsecureSkipVerify : bool
+  S3CacheConfiguration : +Endpoint : string
+  S3CacheConfiguration : +BucketName : string
+  S3CacheConfiguration : +Region : string
+  SageMakerAIClient : +maxTokens : int
+  SageMakerAIClient : +topK : int32
+  SageMakerAIClient : +topP : float32
+  SageMakerAIClient : +endpoint : string
+  SageMakerAIClient : +temperature : float32
+  SageMakerAIClient : +model : string
+  SageMakerAIClient : +client : *sagemakerruntime.SageMakerRuntime
+  SageMakerAIClient : +nopCloser : nopCloser
+  Sensitive : +Masked : string
+  Sensitive : +Unmasked : string
+  ServiceAccountReference : +Name : string
+  SourceConfig : +Catalog : *CatalogFilter
+  SourceConfig : +SourceType : string
+  UsageDetails : +CacheWriteInputTokenCount : int
+  UsageDetails : +CacheReadInputTokenCount : int
+  UsageDetails : +TotalTokens : int
+  UsageDetails : +OutputTokens : int
+  UsageDetails : +InputTokens : int
+  ai_Message : +Content : string
+  ai_Message : +Role : string
+  analyze_Handler : +rpc.UnimplementedServerAnalyzerServiceServer : rpc.UnimplementedServerAnalyzerServiceServer
+  analyzer_DeploymentInfo : +appsv1.Deployment : appsv1.Deployment
+  analyzer_ReplicaSetInfo : +appsv1.ReplicaSet : appsv1.ReplicaSet
+  analyzer_ReplicationControllerInfo : +corev1.ReplicationController : corev1.ReplicationController
+  analyzer_StatefulSetInfo : +appsv1.StatefulSet : appsv1.StatefulSet
+  bedrock_support_InvokeModelResponseBody : +OutputTokens : struct{…}
+  bedrock_support_InvokeModelResponseBody : +InputTokens : struct{…}
+  bedrock_support_InvokeModelResponseBody : +Usage : struct{…}
+  bedrock_support_InvokeModelResponseBody : +OutputTokens : int
+  bedrock_support_InvokeModelResponseBody : +InputTokens : int
+  bedrock_support_InvokeModelResponseBody : +StopSequence : 
+  bedrock_support_InvokeModelResponseBody : +StopReason : string
+  bedrock_support_InvokeModelResponseBody : +Text : []struct { Type string Text string }
+  bedrock_support_InvokeModelResponseBody : +Type : []struct { Type string Text string }
+  bedrock_support_InvokeModelResponseBody : +Content : []struct { Type string Text string }
+  bedrock_support_InvokeModelResponseBody : +Text : string
+  bedrock_support_InvokeModelResponseBody : +Type : string
+  bedrock_support_InvokeModelResponseBody : +Model : string
+  bedrock_support_InvokeModelResponseBody : +Role : string
+  bedrock_support_InvokeModelResponseBody : +Type : string
+  bedrock_support_InvokeModelResponseBody : +ID : string
+  bedrock_support_Message : +Content : []Content
+  bedrock_support_Message : +Role : string
+  bedrock_support_Result : +CompletionReason : string
+  bedrock_support_Result : +OutputText : string
+  bedrock_support_Result : +TokenCount : int
+  common_Result : +ParentObject : string
+  common_Result : +Details : string
+  common_Result : +Error : []Failure
+  common_Result : +Name : string
+  common_Result : +Kind : string
+  config_Handler : +rpc.UnimplementedServerConfigServiceServer : rpc.UnimplementedServerConfigServiceServer
+  custom_Client : +analyzerClient : rpc.CustomAnalyzerServiceClient
+  custom_Client : +c : *grpc.ClientConn
+  custom_Connection : +Port : string
+  custom_Connection : +Url : string
+  custom_CustomAnalyzer : +Connection : Connection
+  custom_CustomAnalyzer : +Name : string
+  custom_analyzer_Connection : +Port : int
+  custom_analyzer_Connection : +Url : string
+  keda_DeploymentInfo : +appsv1.Deployment : appsv1.Deployment
+  keda_ReplicaSetInfo : +appsv1.ReplicaSet : appsv1.ReplicaSet
+  keda_ReplicationControllerInfo : +corev1.ReplicationController : corev1.ReplicationController
+  keda_StatefulSetInfo : +appsv1.StatefulSet : appsv1.StatefulSet
+  kubernetes_Client : +DynamicClient : dynamic.Interface
+  kubernetes_Client : +ServerVersion : *version.Info
+  kubernetes_Client : +Config : *rest.Config
+  kubernetes_Client : +CtrlClient : ctrl.Client
+  kubernetes_Client : +Client : kubernetes.Interface
+  main_AnalyzeRequest : +WithStats : bool
+  main_AnalyzeRequest : +CustomHeaders : []string
+  main_AnalyzeRequest : +InteractiveMode : bool
+  main_AnalyzeRequest : +WithDoc : bool
+  main_AnalyzeRequest : +MaxConcurrency : int
+  main_AnalyzeRequest : +Explain : bool
+  main_AnalyzeRequest : +NoCache : bool
+  main_AnalyzeRequest : +LabelSelector : string
+  main_AnalyzeRequest : +Filters : []string
+  main_AnalyzeRequest : +Language : string
+  main_AnalyzeRequest : +Backend : string
+  main_AnalyzeRequest : +Namespace : string
+  mockCacheService : +data : map[string]string
+  mockCacheService : +rpc.UnimplementedCacheServiceServer : rpc.UnimplementedCacheServiceServer
+  mockConfig : +baseURL : string
+  podConfig : +pod : *corev1.Pod
+  podConfig : +b : []byte
+  query_Handler : +rpc.UnimplementedServerQueryServiceServer : rpc.UnimplementedServerQueryServiceServer
+  server_AnalyzeRequest : +Anonymize : bool
+  server_AnalyzeRequest : +WithStats : bool
+  server_AnalyzeRequest : +CustomHeaders : []string
+  server_AnalyzeRequest : +InteractiveMode : bool
+  server_AnalyzeRequest : +WithDoc : bool
+  server_AnalyzeRequest : +MaxConcurrency : int
+  server_AnalyzeRequest : +Explain : bool
+  server_AnalyzeRequest : +NoCache : bool
+  server_AnalyzeRequest : +LabelSelector : string
+  server_AnalyzeRequest : +Filters : []string
+  server_AnalyzeRequest : +Language : string
+  server_AnalyzeRequest : +Backend : string
+  server_AnalyzeRequest : +Namespace : string
+  zapLoggerAdapter : +logger : *zap.Logger
+@enduml
