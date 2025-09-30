@@ -1,0 +1,13 @@
+{# PROJECT_DOCS.md #}
+# Обзор проекта: {{ project_name }}
+
+{% if description_include %}{% include description_include %}{% endif %}
+{% if contacts_include %}{% include contacts_include %}{% endif %}
+
+- 📋 [TESTS.md]({{ test_link }})
+
+## Структура проекта (.go)
+```text
+{% for line in project_tree -%}
+{{ line }}
+{% endfor -%}

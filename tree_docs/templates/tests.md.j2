@@ -1,0 +1,43 @@
+# Тесты проекта
+
+- Всего тестовых файлов: **{{ totals.files }}**
+- Всего Test*: **{{ totals.tests }}**
+
+## Сводка по директориям
+| Директория | Файлов | Test* |
+|-----------:|------:|------:|
+{% for d in dirs_ordered -%}
+| `{{ d.dir }}` | {{ d.files }} | {{ d.tests }} |
+{% endfor %}
+
+{% for d in dirs_ordered %}
+---
+## {{ d.dir }}
+
+**Итого:** файлов: **{{ d.files }}**, Test*: **{{ d.tests }}**
+
+{% for f in d.files_list %}
+### {{ f.rel }}{% if f.pkg %}  _(package {{ f.pkg }})_{% endif %}
+
+{% if f.tests|length == 0 %}
+Нет Test функций
+{% else %}
+#### Test функции
+| Имя | Строка | Сигнатура |
+|-----|:------:|-----------|
+{% for t in f.tests -%}
+| **{{ t.name }}** | {% if t.line %}[{{ t.line }}]({{ f.rel }}#L{{ t.line }}){% else %}—{% endif %} | `{{ t.signature }}` |
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+## Как запускать
+```bash
+go test ./... -v
+go test ./... -coverprofile=coverage.out
+go tool cover -func=coverage.out > coverage.txt
+go tool cover -html=coverage.out -o coverage.html
+```
+Сгенерировано: {{ generated_at }}

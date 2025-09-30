@@ -1,0 +1,40 @@
+{% for file in files %}
+## {{ file.rel }}
+
+### Функции
+{% for func in file.funcs %}
+{% set name = func.sig.split('(') %}
+### {{ name[0] }} [→]({{ file.rel }}#{{ func.line }})
+{% if func.doc %}
+{{ func.doc }}
+{% else %}
+Без описания
+{% endif %}
+
+{% if func.resolved_params %}
+#### Параметры
+{% for param in func.resolved_params %}
+[`{{ param.source }}` {{ param.name }}]({{ param.file }}#{{ param.line }})
+{% if param.doc %}{{ param.doc }}{% endif %}
+```
+{{ param.definition }}
+```
+{% endfor %}
+{% endif %}
+
+{% if func.resolved_params %}
+#### Результат
+{% for result in func.resolved_results %}
+[`{{ result.source }}` {{ result.name }}]({{ result.file }}#{{ result.line }})
+{% if result.doc %}{{ result.doc }}{% endif %}
+```
+{{ result.definition }}
+```
+{% endfor %}
+{% endif %}
+---
+
+{% endfor %}
+{% endfor %}
+
+Сгенерировано: {{ generated_at }}
